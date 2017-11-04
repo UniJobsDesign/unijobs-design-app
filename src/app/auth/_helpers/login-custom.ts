@@ -79,12 +79,16 @@ export class LoginCustom {
             let form = $(this).closest('form');
             form.validate({
                 rules: {
-                    fullname: {
+                    firstname: {
                         required: true
+                    },
+                    lastname: {
+                        required:true
                     },
                     email: {
                         required: true,
-                        email: true
+                        email: true,
+                        pattern : "[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
                     },
                     password: {
                         required: true
@@ -92,9 +96,6 @@ export class LoginCustom {
                     rpassword: {
                         required: true
                     },
-                    agree: {
-                        required: true
-                    }
                 }
             });
             if (!form.valid()) {

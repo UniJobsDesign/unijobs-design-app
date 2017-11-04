@@ -23,18 +23,14 @@
 								<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password" [(ngModel)]="model.password" #password="ngModel">
 							</div>
 							<div class="row m-login__form-sub">
-								<div class="col m--align-left">
+								<div class="col m--align-center">
 									<label class="m-checkbox m-checkbox--focus">
 										<input type="checkbox" name="remember" [(ngModel)]="model.remember" #remember="ngModel">
 										Remember me
 										<span></span>
 									</label>
 								</div>
-								<div class="col m--align-right">
-									<a href="javascript:;" id="m_login_forget_password" class="m-link">
-										Forget Password ?
-									</a>
-								</div>
+
 							</div>
 							<div class="m-login__form-action">
 								<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
@@ -54,9 +50,14 @@
 						</div>
 						<form (ngSubmit)="f.form.valid && signup()" #f="ngForm" class="m-login__form m-form" action="">
 							<ng-template #alertSignup></ng-template>
+
 							<div class="form-group m-form__group">
-								<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname" [(ngModel)]="model.fullname" #fullname="ngModel">
+								<input class="form-control m-input" type="text" placeholder="First name" name="firstname" [(ngModel)]="model.firstname" #firstname="ngModel">
 							</div>
+							<div class="form-group m-form__group">
+                            	<input class="form-control m-input" type="text" placeholder="Last name" name="lastname" [(ngModel)]="model.lastname" #lastname="ngModel">
+                            </div>
+
 							<div class="form-group m-form__group">
 								<input class="form-control m-input" type="text" placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel" autocomplete="off">
 							</div>
@@ -66,7 +67,7 @@
 							<div class="form-group m-form__group">
 								<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Confirm Password" name="rpassword" [(ngModel)]="model.rpassword" #rpassword="ngModel">
 							</div>
-							<div class="row form-group m-form__group m-login__form-sub">
+							<!--div class="row form-group m-form__group m-login__form-sub">
 								<div class="col m--align-left">
 									<label class="m-checkbox m-checkbox--focus">
 										<input type="checkbox" name="agree" [(ngModel)]="model.agree" #agree="ngModel">
@@ -79,7 +80,7 @@
 									</label>
 									<span class="m-form__help"></span>
 								</div>
-							</div>
+							</div-->
 							<div class="m-login__form-action">
 								<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_signup_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
 									Sign Up
