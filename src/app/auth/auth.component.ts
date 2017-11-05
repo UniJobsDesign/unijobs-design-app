@@ -56,7 +56,7 @@ export class AuthComponent implements OnInit {
             },
             error => {
                 this.showAlert('alertSignin');
-                this._alertService.error(error);
+                this._alertService.error("Invalid login credentials");
                 this.loading = false;
             });
     }

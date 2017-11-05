@@ -6120,42 +6120,61 @@ a.text-dark:focus, a.text-dark:hover {
 
 .btn-focus {
   color: #fff;
-  background-color: #9816f4;
-  border-color: #9816f4; }
+  background-color: #9C27B0;
+  border-color: #9C27B0; }
   .btn-focus:hover {
     color: #fff;
-    background-color: #840ad9;
-    border-color: #7c0acd; }
+    background-color: #7B1FA2;
+    border-color: #7B1FA2; }
   .btn-focus:focus, .btn-focus.focus {
     box-shadow: 0 0 0 3px rgba(152, 22, 244, 0.5); }
   .btn-focus.disabled, .btn-focus:disabled {
-    background-color: #9816f4;
-    border-color: #9816f4; }
+    background-color: #9C27B0;
+    border-color: #9C27B0; }
   .btn-focus:active, .btn-focus.active,
   .show > .btn-focus.dropdown-toggle {
-    background-color: #840ad9;
+    background-color: #7B1FA2;
     background-image: none;
-    border-color: #7c0acd; }
+    border-color: #7B1FA2; }
+
+.btn-focus-landing {
+  color: #fff;
+  background-color: #9C27B0;
+  border-color: #9C27B0; }
+.btn-focus-landing:hover {
+  color: #fff;
+  background-color: #bf53b3;
+  border-color: #bf53b3; }
+.btn-focus-landing:focus, .btn-focus-landing.focus {
+  box-shadow: 0 0 0 3px rgba(152, 22, 244, 0.5); }
+.btn-focus-landing.disabled, .btn-focus-landing:disabled {
+  background-color: #9C27B0;
+  border-color: #9C27B0; }
+.btn-focus-landing:active, .btn-focus-landing.active,
+.show > .btn-focus-landing.dropdown-toggle {
+  background-color: #bf53b3;
+  background-image: none;
+  border-color: #bf53b3; }
 
 .btn-outline-focus {
-  color: #9816f4;
+  color: #9C27B0;
   background-color: transparent;
   background-image: none;
-  border-color: #9816f4; }
+  border-color: #9C27B0; }
   .btn-outline-focus:hover {
     color: #ffffff;
-    background-color: #9816f4;
-    border-color: #9816f4; }
+    background-color: #9C27B0;
+    border-color: #9C27B0; }
   .btn-outline-focus:focus, .btn-outline-focus.focus {
-    box-shadow: 0 0 0 3px rgba(152, 22, 244, 0.5); }
+    box-shadow: 0 0 0 3px rgba(152, 22, 244, 0.9); }
   .btn-outline-focus.disabled, .btn-outline-focus:disabled {
-    color: #9816f4;
+    color: #9C27B0;
     background-color: transparent; }
   .btn-outline-focus:active, .btn-outline-focus.active,
   .show > .btn-outline-focus.dropdown-toggle {
     color: #ffffff;
-    background-color: #9816f4;
-    border-color: #9816f4; }
+    background-color: #9C27B0;
+    border-color: #9C27B0; }
 
 .btn-primary {
   color: #fff;
@@ -6582,24 +6601,24 @@ a.text-dark:focus, a.text-dark:hover {
   .alert.m-alert--outline.alert-focus {
     color: #575962;
     background-color: #ffffff;
-    border-color: #9816f4;
-    color: #9816f4;
+    border-color: #9C27B0;
+    color: #9C27B0;
     font-weight: 400; }
     .alert.m-alert--outline.alert-focus hr {
       border-top-color: #8b0be6; }
     .alert.m-alert--outline.alert-focus .alert-link {
       color: #3f4047; }
     .alert.m-alert--outline.alert-focus .close {
-      color: #9816f4; }
+      color: #9C27B0; }
     .alert.m-alert--outline.alert-focus .m-alert__icon i {
-      color: #9816f4; }
+      color: #9C27B0; }
     .alert.m-alert--outline.alert-focus.m-alert--icon-solid .m-alert__icon {
       position: relative;
-      background: #9816f4; }
+      background: #9C27B0; }
       .alert.m-alert--outline.alert-focus.m-alert--icon-solid .m-alert__icon i {
         color: #ffffff; }
       .alert.m-alert--outline.alert-focus.m-alert--icon-solid .m-alert__icon span {
-        border-left-color: #9816f4; }
+        border-left-color: #9C27B0; }
   .alert.m-alert--outline.alert-primary {
     color: #575962;
     background-color: #ffffff;
@@ -6927,13 +6946,13 @@ a.text-dark:focus, a.text-dark:hover {
     color: #f0f0f0; }
 
 .nav.nav-pills.nav-pills--focus .nav-link.active {
-  background: #9816f4;
+  background: #9C27B0;
   color: #ffffff; }
   .nav.nav-pills.nav-pills--focus .nav-link.active i {
     color: #f0f0f0; }
 
 .nav.nav-pills.nav-pills--focus .nav-item.show .nav-link {
-  background: #9816f4;
+  background: #9C27B0;
   color: #ffffff; }
   .nav.nav-pills.nav-pills--focus .nav-item.show .nav-link i {
     color: #f0f0f0; }

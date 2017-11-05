@@ -38,10 +38,10 @@ export class UserService {
     }
 
     create(user: User) {
-        let header=new Headers({'Content-Type': 'application/json'});
+        let header = new Headers({ 'Content-Type': 'application/json' });
         const getUrl = `${this.OauthUser}/newUser`;
 
-        return this.http.post(getUrl, user, {headers: header}).map((response: Response) => response.json());
+        return this.http.post(getUrl, user, { headers: header }).map((response: Response) => response.json());
     }
 
     update(user: User) {

@@ -1,53 +1,39 @@
-<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile 		m-login m-login--1 m-login--singin" id="m_login" appunwraptag="">
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile 		m-login m-login--1 m-login--singin" id="m_login" style="overflow-y: hidden;">
 	<div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside">
 		<div class="m-stack m-stack--hor m-stack--desktop">
 			<div class="m-stack__item m-stack__item--fluid">
 				<div class="m-login__wrapper">
 					<div class="m-login__logo">
 						<a href="#">
-							<img src="./assets/app/media/img//logos/logo-2.png">
+							<img src="./assets/app/media/img/logos/logo-4.png">
 						</a>
 					</div>
 					<div class="m-login__signin">
 						<div class="m-login__head">
 							<h3 class="m-login__title">
-								Sign In To Admin
+								Sign In to UniJobs
 							</h3>
-							<div class="m--margin-top-40 m-alert m-alert--outline m-alert--outline-2x alert alert-success fade show" role="alert">
-								Use username
-								<span style="font-weight: 500;">
-									demo@demo.com
-								</span>
-								and password
-								<span style="font-weight: 500;">
-									demo
-								</span>
-								to continue or singup.
-							</div>
 						</div>
-						<form class="m-login__form m-form" action="">
+						<form (ngSubmit)="f.form.valid && signin()" #f="ngForm" class="m-login__form m-form" action="">
+							<ng-template #alertSignin></ng-template>
 							<div class="form-group m-form__group">
-								<input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">
+								<input class="form-control m-input" type="text" placeholder="Username" name="username" [(ngModel)]="model.username" #email="ngModel" autocomplete="off">
 							</div>
 							<div class="form-group m-form__group">
-								<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password">
+								<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password" [(ngModel)]="model.password" #password="ngModel">
 							</div>
 							<div class="row m-login__form-sub">
-								<div class="col m--align-left">
+								<div class="col m--align-center">
 									<label class="m-checkbox m-checkbox--focus">
-										<input type="checkbox" name="remember">
+										<input type="checkbox" name="remember" [(ngModel)]="model.remember" #remember="ngModel">
 										Remember me
 										<span></span>
 									</label>
 								</div>
-								<div class="col m--align-right">
-									<a href="javascript:;" id="m_login_forget_password" class="m-link">
-										Forget Password ?
-									</a>
-								</div>
+
 							</div>
 							<div class="m-login__form-action">
-								<button id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
+								<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
 									Sign In
 								</button>
 							</div>
@@ -62,23 +48,29 @@
 								Enter your details to create your account:
 							</div>
 						</div>
-						<form class="m-login__form m-form" action="">
+						<form (ngSubmit)="f.form.valid && signup()" #f="ngForm" class="m-login__form m-form" action="">
+							<ng-template #alertSignup></ng-template>
+
 							<div class="form-group m-form__group">
-								<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">
+								<input class="form-control m-input" type="text" placeholder="First name" name="firstname" [(ngModel)]="model.firstname" #firstname="ngModel">
 							</div>
 							<div class="form-group m-form__group">
-								<input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">
+								<input class="form-control m-input" type="text" placeholder="Last name" name="lastname" [(ngModel)]="model.lastname" #lastname="ngModel">
+							</div>
+
+							<div class="form-group m-form__group">
+								<input class="form-control m-input" type="text" placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel" autocomplete="off">
 							</div>
 							<div class="form-group m-form__group">
-								<input class="form-control m-input" type="password" placeholder="Password" name="password">
+								<input class="form-control m-input" type="password" placeholder="Password" name="password" [(ngModel)]="model.password" #password="ngModel">
 							</div>
 							<div class="form-group m-form__group">
-								<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Confirm Password" name="rpassword">
+								<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Confirm Password" name="rpassword" [(ngModel)]="model.rpassword" #rpassword="ngModel">
 							</div>
-							<div class="row form-group m-form__group m-login__form-sub">
+							<!--div class="row form-group m-form__group m-login__form-sub">
 								<div class="col m--align-left">
 									<label class="m-checkbox m-checkbox--focus">
-										<input type="checkbox" name="agree">
+										<input type="checkbox" name="agree" [(ngModel)]="model.agree" #agree="ngModel">
 										I Agree the
 										<a href="#" class="m-link m-link--focus">
 											terms and conditions
@@ -88,12 +80,12 @@
 									</label>
 									<span class="m-form__help"></span>
 								</div>
-							</div>
+							</div-->
 							<div class="m-login__form-action">
-								<button id="m_login_signup_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
+								<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_signup_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air" style="margin-bottom: 8px;">
 									Sign Up
 								</button>
-								<button id="m_login_signup_cancel" class="btn btn-outline-focus  m-btn m-btn--pill m-btn--custom">
+								<button [disabled]="loading"  id="m_login_signup_cancel" class="btn btn-outline-focus  m-btn m-btn--pill m-btn--custom">
 									Cancel
 								</button>
 							</div>
@@ -108,15 +100,16 @@
 								Enter your email to reset your password:
 							</div>
 						</div>
-						<form class="m-login__form m-form" action="">
+						<form (ngSubmit)="f.form.valid && forgotPass()" #f="ngForm" class="m-login__form m-form" action="">
+							<ng-template #alertForgotPass></ng-template>
 							<div class="form-group m-form__group">
-								<input class="form-control m-input" type="text" placeholder="Email" name="email" id="m_email" autocomplete="off">
+								<input class="form-control m-input" type="text" placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel" id="m_email" autocomplete="off">
 							</div>
 							<div class="m-login__form-action">
-								<button id="m_login_forget_password_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
+								<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_forget_password_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
 									Request
 								</button>
-								<button id="m_login_forget_password_cancel" class="btn btn-outline-focus m-btn m-btn--pill m-btn--custom">
+								<button [disabled]="loading"  id="m_login_forget_password_cancel" class="btn btn-outline-focus m-btn m-btn--pill m-btn--custom">
 									Cancel
 								</button>
 							</div>
@@ -137,16 +130,86 @@
 			</div>
 		</div>
 	</div>
-	<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url(./assets/app/media/img//bg/bg-4.jpg)">
-		<div class="m-grid__item m-grid__item--middle">
-			<h3 class="m-login__welcome">
-				Join Our Community
-			</h3>
-			<p class="m-login__msg">
-				Lorem ipsum dolor sit amet, coectetuer adipiscing
+	<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login m-login__content" id="m_login_team_parent" style="overflow-x: hidden; background-image: url(./assets/app/media/img//bg/bg-6.jpg); color: #ffffff;">
+		<div class="m-login__team-intro" id="m-login__team-intro">
+			<div class="m-grid__item m-grid__item--middle">
+				<h3 class="m-login__welcome">
+					Behind The Scenes
+				</h3>
+				<p class="m-login__msg">
+					<strong>UniJobs</strong> is an open-source project being developed
+					<br>
+					by a team of young developers
+				</p>
 				<br>
-				elit sed diam nonummy et nibh euismod
-			</p>
+				<button id="m_login_team" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
+					Meet the Team
+				</button>
+			</div>
+		</div>
+		<div class="m-login__team" id="m-login__team">
+			<div class="m-grid__item m-grid__item--middle">
+				<h3 class="m-login__welcome">
+					Meet the Team
+				</h3>
+				<div class="container-fluid bg-3" style="padding-left: 0px !important;">
+					<div class="row" style="margin-bottom: 8px;">
+						<div class="col-sm-4">
+							<img src="./assets/app/media/img/team/ionut.png" class="img-responsive center-block margin" style="width: 35%; margin-bottom: 12px;" alt="Image">
+							<h3 style="font-weight: 400;">Ionut-Mihai Marisca</h3>
+							<p>Architect | Frontend Dev</p>
+						</div>
+						<div class="col-sm-4">
+							<img src="./assets/app/media/img/team/ale.png" class="img-responsive center-block margin" style="width: 35%; margin-bottom: 12px;" alt="Image">
+							<h3 style="font-weight: 400;">Alexandra Neamtu</h3>
+							<p>Scrum master | Frontend Dev</p>
+						</div>
+						<div class="col-sm-4">
+							<img src="./assets/app/media/img/team/aris.png" class="img-responsive center-block margin" style="width: 35%; margin-bottom: 12px;" alt="Image">
+							<h3 style="font-weight: 400;">Aris Miuta</h3>
+							<p>Team leader | Frontend Dev</p>
+						</div>
+					</div>
+					<div class="row" style="margin-bottom: 8px;">
+						<div class="col-sm-4">
+							<img src="./assets/app/media/img/team/alex.png" class="img-responsive center-block margin" style="width: 35%; margin-bottom: 12px;" alt="Image">
+							<h3 style="font-weight: 400;">Alexandru Matica</h3>
+							<p>Slave | Backend Dev</p>
+						</div>
+						<div class="col-sm-4">
+							<img src="./assets/app/media/img/team/bogdan.png" class="img-responsive center-block margin" style="width: 35%; margin-bottom: 12px;" alt="Image">
+							<h3 style="font-weight: 400;">Bogdan Morariu</h3>
+							<p>Lazy expert | Backend Dev</p>
+						</div>
+						<div class="col-sm-4">
+							<img src="./assets/app/media/img/team/sam.png" class="img-responsive center-block margin" style="width: 35%; margin-bottom: 12px;" alt="Image">
+							<h3 style="font-weight: 400;">Sam Muntean </h3>
+							<p>Backend Dev</p>
+						</div>
+					</div>
+					<div class="row" style="margin-bottom: 8px;">
+						<div class="col-sm-4">
+							<img src="./assets/app/media/img/team/cris.png" class="img-responsive center-block margin" style="width: 35%; margin-bottom: 12px;" alt="Image">
+							<h3 style="font-weight: 400;">Cristina Man</h3>
+							<p>Backend Dev</p>
+						</div>
+						<div class="col-sm-4">
+							<img src="./assets/app/media/img/team/nicu.png" class="img-responsive center-block margin" style="width: 35%; margin-bottom: 12px;" alt="Image">
+							<h3 style="font-weight: 400;">Mihai Nicu</h3>
+							<p>Backend Dev</p>
+						</div>
+						<div class="col-sm-4">
+							<img src="./assets/app/media/img/team/bogdan2.png" class="img-responsive center-block margin" style="width: 35%; margin-bottom: 12px;" alt="Image">
+							<h3 style="font-weight: 400;">Bogdan Neag</h3>
+							<p>Backend Dev</p>
+						</div>
+					</div>
+				</div>
+				<br>
+				<button id="m_login_back" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
+					Back
+				</button>
+			</div>
 		</div>
 	</div>
 </div>
