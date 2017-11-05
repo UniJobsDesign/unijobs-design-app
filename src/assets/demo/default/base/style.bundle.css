@@ -15778,7 +15778,14 @@ select.m-select2 {
     .m-login.m-login--1 .m-login__content .m-login__welcome {
       font-size: 1.5rem; }
     .m-login m-login__content .m-login__team .h3 {
-      font-size: 1.5rem;  } }
+      font-size: 1.5rem;  }
+  .team-members {
+    font-size: 1.5rem;
+  }}
+
+.team-members {
+  font-size: 1.75rem;
+}
 
 @media (max-width: 992px) {
   .m-login.m-login--1 .m-login__aside {
@@ -15799,7 +15806,18 @@ select.m-select2 {
       margin-bottom: 1rem; }
     .m-login.m-login--1 .m-login__content .m-login__msg {
       font-size: 1rem;
-      margin: 0; } }
+      margin: 0; }
+  .team-members {
+    font-size: 1.3rem;
+    margin: 0;
+  }}
+
+@media (min-width: 1201px) and (max-width: 1440px){
+  .col-sm-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
 
 @media (max-width: 768px) {
   .m-login.m-login--1 .m-login__aside {
