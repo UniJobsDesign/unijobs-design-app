@@ -10,6 +10,9 @@ import { ScriptLoaderService } from "./_services/script-loader.service";
 import { ThemeRoutingModule } from "./theme/theme-routing.module";
 import { AuthModule } from "./auth/auth.module";
 import { GlobalErrorHandler } from "./_services/error-handler.service";
+import {JobsService} from "./auth/_services/jobs.service";
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
     declarations: [
@@ -23,8 +26,9 @@ import { GlobalErrorHandler } from "./_services/error-handler.service";
         AppRoutingModule,
         ThemeRoutingModule,
         AuthModule,
+        FormsModule
     ],
-    providers: [ScriptLoaderService, { provide: ErrorHandler, useClass: GlobalErrorHandler }],
+    providers: [ScriptLoaderService, { provide: ErrorHandler, useClass: GlobalErrorHandler }, JobsService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

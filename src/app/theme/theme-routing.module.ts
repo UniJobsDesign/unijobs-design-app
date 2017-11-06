@@ -422,6 +422,10 @@ const routes: Routes = [
                 "loadChildren": ".\/pages\/default\/not-found\/not-found\/not-found.module#NotFoundModule"
             },
             {
+                "path": "jobs",
+                "loadChildren": ".\/pages\/jobs\/jobs.module#JobsModule"
+            },
+            {
                 "path": "",
                 "redirectTo": "index",
                 "pathMatch": "full"
