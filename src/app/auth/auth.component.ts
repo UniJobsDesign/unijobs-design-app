@@ -52,11 +52,13 @@ export class AuthComponent implements OnInit {
             data => {
                 localStorage.setItem("token", data.access_token);
                 //console.log("user id:",data.userId);
-                this._router.navigate([this.returnUrl]);
+
                 console.log("auth-routing + data: " + data.model);
                 this._userService.getByUsername(this.model.username)
                     .subscribe(user => {
-                            localStorage.setItem('userId', user.id.toString());
+                        localStorage.setItem('userId', user.id.toString());
+                        localStorage.setItem('user',JSON.stringify(user));
+                        this._router.navigate([this.returnUrl]);
                         })
             },
             error => {

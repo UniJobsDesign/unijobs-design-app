@@ -18,11 +18,14 @@ export class HeaderNavComponent implements OnInit, AfterViewInit {
     }
     ngOnInit() {
         var userId = localStorage.getItem("userId");
-        console.log("userID", userId);
+        console.log("userID - ngOnInit", userId);
+        /*
         this.userService.getById(+userId).subscribe(user => {
             this.user = user;
             console.log(this.user);
         });
+        */
+        this.user = JSON.parse(localStorage.getItem('user'));
     }
     ngAfterViewInit() {
 

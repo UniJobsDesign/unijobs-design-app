@@ -19,10 +19,14 @@ export class HeaderProfileComponent implements OnInit {
     ngOnInit() {
         var userId = localStorage.getItem("userId");
         console.log("userID", userId);
+        this.user = JSON.parse(localStorage.getItem('user'));
+        /*
         this.userService.getById(+userId).subscribe(user => {
+
             this.user = user;
             console.log(this.user);
         });
+        */
     }
 
 }
