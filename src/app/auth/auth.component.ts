@@ -51,8 +51,13 @@ export class AuthComponent implements OnInit {
             .subscribe(
             data => {
                 localStorage.setItem("token", data.access_token);
+                //console.log("user id:",data.userId);
                 this._router.navigate([this.returnUrl]);
-                console.log("auth-routing + data: " + data);
+                console.log("auth-routing + data: " + data.model);
+                this._userService.getByUsername(this.model.username)
+                    .subscribe(user => {
+                            localStorage.setItem('userId', user.id.toString());
+                        })
             },
             error => {
                 this.showAlert('alertSignin');

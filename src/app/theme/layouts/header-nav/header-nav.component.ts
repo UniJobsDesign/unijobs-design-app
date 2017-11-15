@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { Helpers } from '../../../helpers';
+import {User} from "../../../auth/_models/user";
+import {UserService} from "../../../auth/_services/user.service";
 
 declare let mLayout: any;
 @Component({
@@ -9,12 +11,18 @@ declare let mLayout: any;
 })
 export class HeaderNavComponent implements OnInit, AfterViewInit {
 
+    user: User;
 
-    constructor() {
+    constructor(private userService: UserService) {
 
     }
     ngOnInit() {
-
+        var userId = localStorage.getItem("userId");
+        console.log("userID", userId);
+        this.userService.getById(+userId).subscribe(user => {
+            this.user = user;
+            console.log(this.user);
+        });
     }
     ngAfterViewInit() {
 

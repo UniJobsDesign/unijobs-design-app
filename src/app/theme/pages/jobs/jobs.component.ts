@@ -19,14 +19,13 @@ export class JobsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.jobService.getJobs().subscribe(jbs => {
+        this.jobService.jobFilterByUser().subscribe(jbs => {
             this.jobs = jbs;
             console.log(this.jobs);
         });
     }
 
     filter(searchfilter: string) {
-
         switch (this.selectedDropDown) {
             case 'Location':
                 console.log('case Location');

@@ -44,7 +44,15 @@ export class JobsService {
         headers.append('Authorization', 'Basic ' + this.basicHeader);
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return this.http.post(getUrl, creds, {headers: headers}).map(this.handleData).catch(this.handleError);
+    }
 
+    public jobFilterByUser(): Observable<Job[]>{
+        const creds = 'access_token=' + localStorage.getItem('token');
+        const userId = localStorage.getItem('userId');
+        console.log(userId);
+        const getUrl = `${this.url}/getAllJobsForUser/${userId}?${creds}`;
+        console.log(getUrl);
+        return this.http.get(getUrl).map(this.handleData).catch(this.handleError);
     }
 
     public jobFilterByLocation(filtervalue: string): Observable<Job[]>{

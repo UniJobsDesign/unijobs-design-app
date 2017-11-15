@@ -82,15 +82,15 @@
 						</div>
 						<div class="m-card-profile__pic">
 							<div class="m-card-profile__pic-wrapper">
-								<img src="./assets/app/media/img/users/user4.jpg" alt=""/>
+								<img src="./assets/app/media/img/users/user.png" alt=""/>
 							</div>
 						</div>
 						<div class="m-card-profile__details">
 							<span class="m-card-profile__name">
-								Mark Andre
+								{{user.firstname}} {{user.lastname}}
 							</span>
 							<a href="" class="m-card-profile__email m-link">
-								mark.andre@gmail.com
+								{{user.email}}
 							</a>
 						</div>
 					</div>
@@ -109,11 +109,11 @@
 										<span class="m-nav__link-text">
 											My Profile
 										</span>
-										<span class="m-nav__link-badge">
+										<!--span class="m-nav__link-badge">
 											<span class="m-badge m-badge--success">
 												2
 											</span>
-										</span>
+										</span-->
 									</span>
 								</span>
 							</a>
@@ -134,22 +134,22 @@
 								</span>
 							</a>
 						</li>
-						<li class="m-nav__item">
+						<!--li class="m-nav__item">
 							<a routerLink="/header/profile" class="m-nav__link">
 								<i class="m-nav__link-icon flaticon-graphic-2"></i>
 								<span class="m-nav__link-text">
 									Sales
 								</span>
 							</a>
-						</li>
-						<li class="m-nav__item">
+						</li-->
+						<!--li class="m-nav__item">
 							<a routerLink="/header/profile" class="m-nav__link">
 								<i class="m-nav__link-icon flaticon-time-3"></i>
 								<span class="m-nav__link-text">
 									Events
 								</span>
 							</a>
-						</li>
+						</li-->
 						<li class="m-nav__item">
 							<a routerLink="/header/profile" class="m-nav__link">
 								<i class="m-nav__link-icon flaticon-lifebuoy"></i>
@@ -159,7 +159,7 @@
 							</a>
 						</li>
 					</ul>
-					<div class="m-portlet__body-separator"></div>
+					<!--div class="m-portlet__body-separator"></div>
 					<div class="m-widget1 m-widget1--paddingless">
 						<div class="m-widget1__item">
 							<div class="row m-row--no-padding align-items-center">
@@ -212,7 +212,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div-->
 				</div>
 			</div>
 		</div>
@@ -261,7 +261,7 @@
 															<a href="" class="m-nav__link">
 																<i class="m-nav__link-icon flaticon-share"></i>
 																<span class="m-nav__link-text">
-																	Create Post
+																	Create Job
 																</span>
 															</a>
 														</li>
@@ -273,14 +273,14 @@
 																</span>
 															</a>
 														</li>
-														<li class="m-nav__item">
+														<!--li class="m-nav__item">
 															<a href="" class="m-nav__link">
 																<i class="m-nav__link-icon flaticon-multimedia-2"></i>
 																<span class="m-nav__link-text">
 																	Upload File
 																</span>
 															</a>
-														</li>
+														</li-->
 														<li class="m-nav__section">
 															<span class="m-nav__section-text">
 																Useful Links
@@ -339,23 +339,23 @@
 										Full Name
 									</label>
 									<div class="col-7">
-										<input class="form-control m-input" type="text" value="Mark Andre">
+										<input class="form-control m-input" type="text" value="{{user.lastname}} {{user.firstname}}">
 									</div>
 								</div>
-								<div class="form-group m-form__group row">
+								<!--div class="form-group m-form__group row">
 									<label for="example-text-input" class="col-2 col-form-label">
 										Occupation
 									</label>
 									<div class="col-7">
 										<input class="form-control m-input" type="text" value="CTO">
 									</div>
-								</div>
+								</div-->
 								<div class="form-group m-form__group row">
 									<label for="example-text-input" class="col-2 col-form-label">
-										Company Name
+										Email
 									</label>
 									<div class="col-7">
-										<input class="form-control m-input" type="text" value="Keenthemes">
+										<input class="form-control m-input" type="text" value="{{user.email}}">
 										<span class="m-form__help">
 											If you want your invoices addressed to a company. Leave blank to use your full name.
 										</span>
@@ -366,7 +366,7 @@
 										Phone No.
 									</label>
 									<div class="col-7">
-										<input class="form-control m-input" type="text" value="+456669067890">
+										<input class="form-control m-input" type="text" value="{{user.phone}}">
 									</div>
 								</div>
 								<div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
@@ -393,14 +393,14 @@
 										<input class="form-control m-input" type="text" value="San Francisco">
 									</div>
 								</div>
-								<div class="form-group m-form__group row">
+								<!--div class="form-group m-form__group row">
 									<label for="example-text-input" class="col-2 col-form-label">
 										State
 									</label>
 									<div class="col-7">
 										<input class="form-control m-input" type="text" value="California">
 									</div>
-								</div>
+								</div-->
 								<div class="form-group m-form__group row">
 									<label for="example-text-input" class="col-2 col-form-label">
 										Postcode
@@ -422,7 +422,7 @@
 										Linkedin
 									</label>
 									<div class="col-7">
-										<input class="form-control m-input" type="text" value="www.linkedin.com/Mark.Andre">
+										<input class="form-control m-input" type="text" value="www.linkedin.com/{{user.firstname}}.{{user.lastname}}">
 									</div>
 								</div>
 								<div class="form-group m-form__group row">
@@ -430,7 +430,7 @@
 										Facebook
 									</label>
 									<div class="col-7">
-										<input class="form-control m-input" type="text" value="www.facebook.com/Mark.Andre">
+										<input class="form-control m-input" type="text" value="www.facebook.com/{{user.firstname}}.{{user.lastname}}">
 									</div>
 								</div>
 								<div class="form-group m-form__group row">
@@ -438,7 +438,7 @@
 										Twitter
 									</label>
 									<div class="col-7">
-										<input class="form-control m-input" type="text" value="www.twitter.com/Mark.Andre">
+										<input class="form-control m-input" type="text" value="www.twitter.com/{{user.firstname}}.{{user.lastname}}">
 									</div>
 								</div>
 								<div class="form-group m-form__group row">
@@ -446,7 +446,7 @@
 										Instagram
 									</label>
 									<div class="col-7">
-										<input class="form-control m-input" type="text" value="www.instagram.com/Mark.Andre">
+										<input class="form-control m-input" type="text" value="www.instagram.com/{{user.firstname}}.{{user.lastname}}">
 									</div>
 								</div>
 							</div>
