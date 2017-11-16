@@ -67,14 +67,19 @@ export class UserService {
 
 
     create(user: User) {
+        user.username = "";
         let header = new Headers({ 'Content-Type': 'application/json' });
         const getUrl = `${this.OauthUser}/newUser`;
-
+        console.log("Create user:",user);
         return this.http.post(getUrl, user, { headers: header }).map((response: Response) => response.json());
     }
 
     update(user: User) {
-        return this.http.put('/api/users/' + user.id, user).map((response: Response) => response.json());
+        let header = new Headers({ 'Content-Type': 'application/json' });
+        const getUrl = `${this.OauthUser}/updateUser`;
+        console.log("Update user:",user);
+
+        return this.http.post(getUrl, user, { headers: header }).map((response: Response)=> response.json());
     }
 
     delete(id: number) {

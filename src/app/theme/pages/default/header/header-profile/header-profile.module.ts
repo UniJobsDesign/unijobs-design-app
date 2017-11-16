@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HeaderProfileComponent } from './header-profile.component';
 import { LayoutModule } from '../../../../layouts/layout.module';
 import { DefaultComponent } from '../../default.component';
+import {FormsModule} from "@angular/forms";
 
 const routes: Routes = [
     {
@@ -21,7 +22,8 @@ const routes: Routes = [
     imports: [
         CommonModule, RouterModule.forChild(routes), LayoutModule
     ], exports: [
-        RouterModule
+        RouterModule,
+        FormsModule
     ], declarations: [
         HeaderProfileComponent
     ]

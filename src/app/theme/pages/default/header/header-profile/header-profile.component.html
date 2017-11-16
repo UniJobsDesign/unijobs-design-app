@@ -234,7 +234,7 @@
 							</li>
 							<li class="nav-item m-tabs__item">
 								<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_3" role="tab">
-									Settings
+									Added Jobs
 								</a>
 							</li>
 						</ul>
@@ -351,6 +351,14 @@
 									</div>
 								</div-->
 								<div class="form-group m-form__group row">
+                                	<label for="example-text-input" class="col-2 col-form-label">
+                           				Date Of Birth
+                                	</label>
+                                	<div class="col-7">
+                                		<input class="form-control m-input" id="dob" #dob type="date" value="{{dateOfBirth}}">
+                                	</div>
+                               </div>
+								<div class="form-group m-form__group row">
 									<label for="example-text-input" class="col-2 col-form-label">
 										Email
 									</label>
@@ -366,7 +374,7 @@
 										Phone No.
 									</label>
 									<div class="col-7">
-										<input class="form-control m-input" type="text" value="{{user.phone}}">
+										<input class="form-control m-input" #phone id="phone" type="text" value="{{user.phone}}">
 									</div>
 								</div>
 								<div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
@@ -455,21 +463,81 @@
 									<div class="row">
 										<div class="col-2"></div>
 										<div class="col-7">
-											<button type="reset" class="btn btn-accent m-btn m-btn--air m-btn--custom">
-												Save changes
-											</button>
+											<a href="" class="btn btn-outline-primary m-btn m-btn--pill m-btn--wide btn-sm" (click)="updateUser(dob,phone)">
+                                            	Submit
+                                            </a>
 											&nbsp;&nbsp;
-											<button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
+											<!--button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
 												Cancel
-											</button>
+											</button-->
 										</div>
 									</div>
 								</div>
 							</div>
 						</form>
 					</div>
-					<div class="tab-pane active" id="m_user_profile_tab_2"></div>
-				</div>
+					<div class="tab-pane" id="m_user_profile_tab_2">
+					    <form class="m-form m-form--fit m-form--label-align-right">
+                    		<div class="m-portlet__body">
+                    	        <div class="form-group m-form__group m--margin-top-10 m--hide">
+                    		        <div class="alert m-alert m-alert--default" role="alert">
+                    			        The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
+                    		        </div>
+                    			</div>
+                                <div class="form-group m-form__group row">
+                                	<div class="col-10 ml-auto">
+                                		<h3 class="m-form__section">
+                                			No messages
+                                		</h3>
+                                	</div>
+                                </div>
+                            </div>
+                         </form>
+                    </div>
+					<div class="tab-pane" id="m_user_profile_tab_3">
+                	    <div class="m-content">
+                	        <div *ngIf="jobs" style="animation: fadeIn;">
+                        		<div class="row">
+                        			<div *ngFor="let job of jobs" class="col-xl-4">
+                        				<div class="m-portlet">
+                        					<div class="m-portlet__head">
+                        						<div class="m-portlet__head-caption">
+                        							<div class="m-portlet__head-title">
+                        							    <span class="m-portlet__head-icon">
+                        								    <i class="fa fa-thumb-tack"></i>
+                        							    </span>
+                        								<h3 class="m-portlet__head-text">
+                        									{{job.description}}
+                        								</h3>
+                        							</div>
+                        						</div>
+                        					</div>
+                        					<div class="m-portlet__body">
+                        						<div class="m-scrollable" data-max-height="200" data-scrollable="true" data-scrollbar-shown="true">
+                        								Pay: {{job.cost}} RON <br>
+                        								Time: {{job.hpw}} h / week <br>
+                        								Location: {{job.location}} <br>
+                        						</div>
+                        					</div>
+                        					<div class="m-portlet__foot">
+                        						<div class="row align-items-center">
+                        							<div class="col-lg-12">
+                        								<button class="btn btn-success" type="submit">
+                        									Apply
+                        								</button>
+                        								<button class="btn btn-accent" type="submit">
+                        									Info
+                        								</button>
+                        							</div>
+                        						</div>
+                        					</div>
+                        				</div>
+                        			</div>
+                        		</div>
+                        	</div>
+                        </div>
+                    </div>
+                </div>
 			</div>
 		</div>
 	</div>
