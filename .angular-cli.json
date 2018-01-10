@@ -21,7 +21,8 @@
             "styles": [
                 "styles.scss",
                 "..\/node_modules\/primeng\/resources\/primeng.css",
-                "..\/node_modules\/primeng\/resources\/themes\/bootstrap\/theme.css"
+                "..\/node_modules\/primeng\/resources\/themes\/bootstrap\/theme.css",
+                "../node_modules/summernote/dist/summernote.css"
             ],
             "scripts": [],
             "environmentSource": "environments\/environment.ts",

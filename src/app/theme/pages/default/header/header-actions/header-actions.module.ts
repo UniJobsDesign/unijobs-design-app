@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HeaderActionsComponent } from './header-actions.component';
 import { LayoutModule } from '../../../../layouts/layout.module';
 import { DefaultComponent } from '../../default.component';
+import {AlertService} from "../../../../../auth/_services/alert.service";
+import {AlertComponent} from "../../../../../auth/_directives/alert.component";
 
 const routes: Routes = [
     {
@@ -23,8 +25,8 @@ const routes: Routes = [
     ], exports: [
         RouterModule
     ], declarations: [
-        HeaderActionsComponent
-    ]
+        HeaderActionsComponent,
+    ],
 })
 export class HeaderActionsModule {
 

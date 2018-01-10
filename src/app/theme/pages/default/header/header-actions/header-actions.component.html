@@ -108,25 +108,62 @@
 						Create A Job
 					</h3>
 				</div>
+				 <ng-template #alertJob> </ng-template>
 			</div>
 		</div>
 		<!--begin::Form-->
 		<form class="m-form m-form--fit m-form--label-align-right">
 			<div class="m-portlet__body">
+
+
 				<div class="form-group m-form__group row">
+
 					<label class="col-form-label col-lg-3 col-sm-12">
-						Title
+						Location
 					</label>
 					<div class="col-lg-7 col-md-7 col-sm-12">
-						<input type="email" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter post title">
+						<input type="text" #location class="form-control m-input" >
 					</div>
 				</div>
+				<div class="form-group m-form__group row">
+                    <label class="col-form-label col-lg-3 col-sm-12">
+                        Hours per week
+                    </label>
+                    <div class="col-lg-7 col-md-7 col-sm-12">
+                        <input type="number" #hpw class="form-control m-input">
+                    </div>
+                </div>
+				<div class="form-group m-form__group row">
+                    <label class="col-form-label col-lg-3 col-sm-12">
+                        Cost
+                    </label>
+                    <div class="col-lg-7 col-md-7 col-sm-12">
+                        <input type="number" #cost class="form-control m-input">
+                    </div>
+                </div>
+				<div class="form-group m-form__group row">
+                    <label class="col-form-label col-lg-3 col-sm-12">
+                        Start Date
+                    </label>
+                    <div class="col-lg-7 col-md-7 col-sm-12">
+                        <input type="date" #startDate class="form-control m-input">
+                    </div>
+                </div>
+				<div class="form-group m-form__group row">
+                    <label class="col-form-label col-lg-3 col-sm-12">
+                        End Date
+                    </label>
+                    <div class="col-lg-7 col-md-7 col-sm-12">
+                        <input type="date" #endDate class="form-control m-input">
+                    </div>
+                </div>
+
 				<div class="form-group m-form__group row">
 					<label class="col-form-label col-lg-3 col-sm-12">
 						Job Description
 					</label>
 					<div class="col-lg-7 col-md-7 col-sm-12">
-						<div class="summernote"></div>
+						<div class="summernote" ></div>
 					</div>
 				</div>
 			</div>
@@ -134,14 +171,15 @@
 				<div class="m-form__actions m-form__actions">
 					<div class="row">
 						<div class="col-lg-9 ml-lg-auto">
-							<button type="reset" class="btn btn-brand">
-								Submit
-							</button>
-							<button type="reset" class="btn btn-secondary">
-								Cancel
-							</button>
+							<a href="" class="btn btn-outline-primary m-btn m-btn--pill m-btn--wide btn-sm" (click)="addJob(cost,location,hpw,startDate,endDate)">
+                                Submit
+                            </a>
+							<a href="" class="btn btn-outline-metal m-btn m-btn--pill m-btn--wide btn-sm">
+                                Cancel
+                            </a>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</form>

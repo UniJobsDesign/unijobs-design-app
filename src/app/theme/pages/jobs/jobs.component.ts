@@ -19,7 +19,7 @@ export class JobsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.jobService.jobFilterByUser().subscribe(jbs => {
+        this.jobService.getJobs().subscribe(jbs => {
             this.jobs = jbs;
             console.log(this.jobs);
         });
