@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Job} from "../../../auth/_models/job";
 import {JobsService} from "../../../auth/_services/jobs.service";
 
@@ -8,10 +8,13 @@ import {JobsService} from "../../../auth/_services/jobs.service";
     encapsulation: ViewEncapsulation.None,
 })
 export class JobsComponent implements OnInit {
+    pageNo = 1;
     selectedDropDown = 'Description';
     jobs: Job[];
     whatever: string;
-    constructor(private jobService: JobsService) { }
+
+    constructor(private jobService: JobsService) {
+    }
 
     updateSelected(filterType: string) {
         document.getElementById('search_concept').innerHTML = filterType;
@@ -19,7 +22,7 @@ export class JobsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.jobService.getJobs().subscribe(jbs => {
+        this.jobService.getJobs(this.pageNo).subscribe(jbs => {
             this.jobs = jbs;
             console.log(this.jobs);
         });
@@ -50,10 +53,38 @@ export class JobsComponent implements OnInit {
 
     clear() {
         this.whatever = '';
-        this.jobService.getJobs().subscribe(jbs => {
+        this.jobService.getJobs(this.pageNo).subscribe(jbs => {
             this.jobs = jbs;
             console.log(this.jobs);
         });
+    }
+
+    next() {
+        this.jobService.getJobs(this.pageNo).subscribe(jbs => {
+            if (jbs.length !== 0) {
+                this.jobs = jbs;
+                console.log(this.jobs);
+                this.pageNo++;
+            }
+            else {
+                console.log("last page");
+            }
+        });
+    }
+
+    prev() {
+        if (this.pageNo >= 1) {
+            this.jobService.getJobs(this.pageNo - 2).subscribe(jbs => {
+                if (jbs.length !== 0) {
+                    this.jobs = jbs;
+                    console.log(this.jobs);
+                    this.pageNo--;
+                }
+                else {
+                    console.log("first page");
+                }
+            });
+        }
     }
 
 }

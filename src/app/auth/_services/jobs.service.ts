@@ -17,9 +17,9 @@ export class JobsService {
 
     private url = 'http://localhost:8080/api/job';
 
-    public getJobs(): Observable<Job[]> {
+    public getJobs(page: number): Observable<Job[]> {
         const creds = 'access_token=' + localStorage.getItem('token');
-        const getUrl = `${this.url}/jobs/1?${creds}`;
+        const getUrl = `${this.url}/jobs/${page}?${creds}`;
         return this.http.get(getUrl).map(this.handleData).catch(this.handleError);
     }
 
@@ -37,7 +37,7 @@ export class JobsService {
 
     public jobFilterByDescription(filtervalue: string): Observable<Job[]>{
         if (filtervalue === '')
-            return this.getJobs();
+            return this.getJobs(0);
         const creds = 'access_token=' + localStorage.getItem('token');
         const getUrl = `${this.url}/byDescription/${filtervalue}/1`;
         const headers = new Headers();
@@ -57,7 +57,7 @@ export class JobsService {
 
     public jobFilterByLocation(filtervalue: string): Observable<Job[]>{
         if (filtervalue === '')
-            return this.getJobs();
+            return this.getJobs(0);
         const creds = 'access_token=' + localStorage.getItem('token');
         const getUrl = `${this.url}/byLocation/${filtervalue}/1`;
         const headers = new Headers();
@@ -68,11 +68,11 @@ export class JobsService {
 
     }
 
-    public jobFilterByUniUser(): Observable<Job[]>{
+    public jobFilterByUniUser(page: number): Observable<Job[]>{
         const creds = 'access_token=' + localStorage.getItem('token');
         const userId = localStorage.getItem('userId');
         console.log(userId);
-        const getUrl = `${this.url}/byUser/${userId}/1?${creds}`;
+        const getUrl = `${this.url}/byUser/${userId}/${page}?${creds}`;
         console.log(getUrl);
         const headers = new Headers();
         headers.append('Authorization', 'Basic ' + this.basicHeader);
