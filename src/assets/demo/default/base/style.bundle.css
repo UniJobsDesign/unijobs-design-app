@@ -20579,3 +20579,7 @@ body.m-content--skin-light2 {
       text-align: center;
       float: none;
       margin: 0 auto; } }
+
+#summernote-text p {
+  display: inline;
+}
