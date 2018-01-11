@@ -19,7 +19,8 @@ export class JobsService {
 
     public getJobs(page: number): Observable<Job[]> {
         const creds = 'access_token=' + localStorage.getItem('token');
-        const getUrl = `${this.url}/jobs/${page}?${creds}`;
+        const userId = localStorage.getItem('userId');
+        const getUrl = `${this.url}/jobs/${userId}/${page}?${creds}`;
         return this.http.get(getUrl).map(this.handleData).catch(this.handleError);
     }
 
