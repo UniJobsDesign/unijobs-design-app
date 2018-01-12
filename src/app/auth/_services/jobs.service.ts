@@ -29,6 +29,13 @@ export class JobsService {
         return this.http.get(getUrl).map(this.handleData).catch(this.handleError);
     }
 
+
+    public getJobById(id:number):Observable<Job>{
+        const creds = 'access_token=' + localStorage.getItem('token');
+        const getUrl = `${this.url}/getJob/${id}?${creds}`;
+        return this.http.get(getUrl).map(this.handleDataR).catch(this.handleError);
+    }
+
     private handleData(res: Response) {
         const body = res.json().jobs;
         return body;
@@ -69,7 +76,7 @@ export class JobsService {
         const headers = new Headers();
         headers.append('Authorization', 'Basic ' + this.basicHeader);
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        console.log(getUrl)
+        console.log(getUrl);
         return this.http.post(getUrl, creds, {headers: headers}).map(this.handleData).catch(this.handleError);
 
     }
@@ -96,4 +103,25 @@ export class JobsService {
 
         return this.http.post(getUrl, job, { headers: header }).map(this.handleData).catch(this.handleError);
     }
+
+
+    requestJob(jobid: number)
+    {
+        const creds = 'access_token=' + localStorage.getItem('token');
+        let header = new Headers({ 'Content-Type': 'application/json' });
+        const userId = localStorage.getItem('userId');
+        const getUrl = `http://localhost:8080/api/request/requestJob/${userId}/${jobid}?${creds}`;
+        console.log("Request job:",jobid);
+
+        return this.http.post(getUrl, { headers: header }).map(this.handleDataR).catch(this.handleError);
+    }
+
+
+    private handleDataR(res: Response) {
+        console.log(res.json());
+        const body = res.json();
+        return body;
+    }
+
+
 }

@@ -12,12 +12,15 @@ import { AuthModule } from "./auth/auth.module";
 import { GlobalErrorHandler } from "./_services/error-handler.service";
 import {JobsService} from "./auth/_services/jobs.service";
 import { FormsModule } from '@angular/forms';
+import {RequestService} from "./auth/_services/request.service";
+import { CandidateComponent } from './theme/pages/candidate/candidate.component';
 
 
 @NgModule({
     declarations: [
         ThemeComponent,
         AppComponent,
+        CandidateComponent,
     ],
     imports: [
         LayoutModule,
@@ -28,7 +31,7 @@ import { FormsModule } from '@angular/forms';
         AuthModule,
         FormsModule
     ],
-    providers: [ScriptLoaderService, { provide: ErrorHandler, useClass: GlobalErrorHandler }, JobsService],
+    providers: [ScriptLoaderService, { provide: ErrorHandler, useClass: GlobalErrorHandler }, JobsService,RequestService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

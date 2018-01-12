@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Job} from "../../../auth/_models/job";
 import {JobsService} from "../../../auth/_services/jobs.service";
+import {RequestService} from "../../../auth/_services/request.service";
 
 @Component({
     selector: ".m-wrapper",
@@ -85,6 +86,16 @@ export class JobsComponent implements OnInit {
                 }
             });
         }
+    }
+
+
+
+    apply(job: Job){
+        console.log(job.id);
+        this.jobService.requestJob(job.id).subscribe(jbs => {
+            //this.jobs = jbs;
+           console.log(jbs);
+        });
     }
 
 }
