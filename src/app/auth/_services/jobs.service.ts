@@ -24,6 +24,11 @@ export class JobsService {
         return this.http.get(getUrl).map(this.handleData).catch(this.handleError);
     }
 
+    public getAllJobs(page: number): Observable<Job[]> {
+        const getUrl = `${this.url}/allJobs/${page}`;
+        return this.http.get(getUrl).map(this.handleData).catch(this.handleError);
+    }
+
     private handleData(res: Response) {
         const body = res.json().jobs;
         return body;
