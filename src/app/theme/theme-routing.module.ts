@@ -430,6 +430,10 @@ const routes: Routes = [
                 "loadChildren": ".\/pages\/jobapplications\/jobapplications.module#JobapplicationsModule"
             },
             {
+                "path": "candidates",
+                "loadChildren": ".\/pages\/candidates\/candidates.module#CandidatesModule"
+            },
+            {
                 "path": "",
                 "redirectTo": "index",
                 "pathMatch": "full"

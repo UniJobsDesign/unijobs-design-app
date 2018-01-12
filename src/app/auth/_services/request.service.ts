@@ -24,6 +24,14 @@ export class RequestService {
   }
 
 
+  public getUserRequests(): Observable<Request[]> {
+    const creds = 'access_token=' + localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const getUrl = `${this.url}/requests/${userId}?${creds}`;
+    return this.http.get(getUrl).map(this.handleData).catch(this.handleError);
+  }
+
+
   private handleData(res: Response) {
     const body = res.json().requests;
     return body;
@@ -45,6 +53,25 @@ export class RequestService {
     console.log("Request job:",jobid);
 
     return this.http.post(getUrl, jobid, { headers: header }).map(this.handleData).catch(this.handleError);
+  }
+
+
+  acceptRequest(reqId: number){
+    const creds = 'access_token=' + localStorage.getItem('token');
+    let header = new Headers({ 'Content-Type': 'application/json' });
+    const getUrl = `${this.url}/accept/${reqId}?${creds}`;
+    //console.log("Request job:",jobid);
+
+    return this.http.post(getUrl, { headers: header }).map(this.handleData).catch(this.handleError);
+  }
+
+  rejectRequest(reqId: number) {
+    const creds = 'access_token=' + localStorage.getItem('token');
+    let header = new Headers({'Content-Type': 'application/json'});
+    const getUrl = `${this.url}/reject/${reqId}?${creds}`;
+    //console.log("Request job:",jobid);
+
+    return this.http.post(getUrl, {headers: header}).map(this.handleData).catch(this.handleError);
   }
 
 
