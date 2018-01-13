@@ -17,9 +17,9 @@
 <!-- END: Subheader -->
 <div class="m-content">
 	<br />
-	<div *ngIf="applications" style="animation: fadeIn;">
+	<div *ngIf="jobs" style="animation: fadeIn;">
 		<div class="row">
-			<div *ngFor="let app of applications" class="col-xl-4">
+			<div *ngFor="let app of jobs; let i = index" class="col-xl-4">
 					<div class="m-portlet">
 						<div class="m-portlet__head">
 							<div class="m-portlet__head-caption">
@@ -28,7 +28,7 @@
 								<i class="fa fa-thumb-tack"></i>
 							</span>
 									<h3 class="m-portlet__head-text">
-										<div class="text" > {{app.job}}</div>
+										<div class="text" > {{app.description}} </div>
 									</h3>
 								</div>
 							</div>
@@ -36,7 +36,7 @@
 						<div class="m-portlet__body">
 							<div class="m-scrollable" data-max-height="200" data-scrollable="true" data-scrollbar-shown="true">
 
-								Status: {{app.status}}<br>
+								Status: {{applications[i].status}}<br>
 
 							</div>
 						</div>
@@ -50,15 +50,7 @@
 							</div>
 						</div>
 					</div>
-
 			</div>
-			<div class="m-portlet__foot">
-			<a href="" class="btn btn-outline-metal m-btn m-btn--pill m-btn--air btn-sm" (click)="prev()"><</a>
-			      {{pageNo}}
-            <a href="" class="btn btn-outline-metal m-btn m-btn--pill m-btn--air btn-sm" (click)="next()">></a>
-
-            </div>
-
 		</div>
 	</div>
 </div>

@@ -23,14 +23,16 @@ export class JobapplicationsComponent implements OnInit {
       this.requestService.getRequests().subscribe(jbs => {
           this.applications = jbs;
           console.log(this.applications);
+          let jo: Job[] = [];
           for (let entry of this.applications) {
               console.log(entry.job);
               this.jobService.getJobById(entry.job).subscribe(jb => {
                   console.log(jb.description);
-                  this.jobs.push(jb);
+                  jo.push(jb);
                   console.log("----",this.jobs)
               });// 1, "string", false
           }
+          this.jobs = jo;
       });
       console.log("---",this.jobs);
 
