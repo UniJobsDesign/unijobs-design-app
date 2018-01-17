@@ -24,12 +24,13 @@ export class RequestService {
   }
 
 
-  public getUserRequests(): Observable<Request[]> {
+  public getUserRequests(status: string): Observable<Request[]> {
     const creds = 'access_token=' + localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
-    const getUrl = `${this.url}/requests/${userId}?${creds}`;
+    const getUrl = `${this.url}/requestsByStatus/${userId}/${status}?${creds}`;
     return this.http.get(getUrl).map(this.handleData).catch(this.handleError);
   }
+
 
 
   private handleData(res: Response) {
@@ -69,6 +70,16 @@ export class RequestService {
     const creds = 'access_token=' + localStorage.getItem('token');
     let header = new Headers({'Content-Type': 'application/json'});
     const getUrl = `${this.url}/reject/${reqId}?${creds}`;
+    //console.log("Request job:",jobid);
+
+    return this.http.post(getUrl, {headers: header}).map(this.handleData).catch(this.handleError);
+  }
+
+
+  finishRequest(reqId: number) {
+    const creds = 'access_token=' + localStorage.getItem('token');
+    let header = new Headers({'Content-Type': 'application/json'});
+    const getUrl = `${this.url}/finish/${reqId}?${creds}`;
     //console.log("Request job:",jobid);
 
     return this.http.post(getUrl, {headers: header}).map(this.handleData).catch(this.handleError);

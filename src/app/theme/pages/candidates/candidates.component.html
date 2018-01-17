@@ -14,49 +14,211 @@
 		</div>
 	</div>
 </div>
-<!-- END: Subheader -->
 <div class="m-content">
-	<br />
-	<div *ngIf="applications" style="animation: fadeIn;">
-		<div class="row">
-			<div *ngFor="let app of applications" class="col-xl-4">
-					<div class="m-portlet">
-						<div class="m-portlet__head">
-							<div class="m-portlet__head-caption">
-								<div class="m-portlet__head-title">
-							<span class="m-portlet__head-icon">
-								<i class="fa fa-thumb-tack"></i>
-							</span>
-									<h3 class="m-portlet__head-text">
-										<div class="text" > {{app.job}}</div>
-									</h3>
-								</div>
-							</div>
-						</div>
-						<div class="m-portlet__body">
-							<div class="m-scrollable" data-max-height="200" data-scrollable="true" data-scrollbar-shown="true">
-
-								Status: {{app.status}}<br>
-								User: {{app.fromUniUser}}
-
-							</div>
-						</div>
-						<div class="m-portlet__foot">
-							<div class="row align-items-center">
-								<div class="col-lg-12">
-									<button class="btn btn-success" type="submit" (click)="accept(app)">
-										Accept
-									</button>
-								</div>
-								<div class="col-lg-12">
-                                									<button class="btn btn-danger" type="submit" (click)="reject(app)">
-                                										Reject
-                                									</button>
-                                								</div>
-							</div>
-						</div>
+	<div class="row">
+			<div class="m-portlet m-portlet--full-height m-portlet--tabs">
+				<div class="m-portlet__head">
+					<div class="m-portlet__head-tools">
+						<ul class="nav nav-tabs m-tabs m-tabs-line   m-tabs-line--left m-tabs-line--primary" role="tablist">
+							<li class="nav-item m-tabs__item">
+								<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_candidates_tab_1" role="tab">
+									<i class="flaticon-share m--hide"></i>
+									Pending
+								</a>
+							</li>
+							<li class="nav-item m-tabs__item">
+								<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_candidates_tab_2" role="tab">
+									Accepted
+								</a>
+							</li>
+							<li class="nav-item m-tabs__item">
+								<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_candidates_tab_3" role="tab">
+									Rejected
+								</a>
+							</li>
+							<li class="nav-item m-tabs__item">
+                                <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_candidates_tab_4" role="tab">
+                            		Finished
+                            	</a>
+                            </li>
+						</ul>
 					</div>
+					</div>
+				<div class="tab-content">
+					<div class="tab-pane active" id="m_candidates_tab_1">
+                	    <div class="m-content">
+                	        <div *ngIf="applicationspending" style="animation: fadeIn;">
+                        		<div class="row">
+                                    <div *ngFor="let app of applicationspending" class="col-xl-4">
+                                        <div class="m-portlet">
+                                            <div class="m-portlet__head">
+                                                <div class="m-portlet__head-caption">
+                                                    <div class="m-portlet__head-title">
+                                                        <span class="m-portlet__head-icon">
+                                                            <i class="fa fa-thumb-tack"></i>
+                                                        </span>
+                                                        <h3 class="m-portlet__head-text">
+                                                            <div class="text" > {{app.job}}</div>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="m-portlet__body">
+                                                <div class="m-scrollable" data-max-height="200" data-scrollable="true" data-scrollbar-shown="true">
+
+                                                    Status: {{app.status}}<br>
+                                                    User: {{app.fromUniUser}}
+
+                                                </div>
+                                            </div>
+                                            <div class="m-portlet__foot">
+                                                 <div class="row align-items-center">
+                                                     <div class="col-lg-12">
+                                                          <button class="btn btn-success" type="submit" (click)="accept(app)">
+                                                                 Accept
+                                                          </button>
+                                                     </div>
+                                                     <div class="col-lg-12">
+                                                          <button class="btn btn-danger" type="submit" (click)="reject(app)">
+                                                                Reject
+                                                          </button>
+                                                     </div>
+                                                 </div>
+                                            </div>
+                                        </div>
+                        	        </div>
+                        	    </div>
+                        	</div>
+                            <div *ngIf="applicationspending.length == 0" style="animation: fadeIn;">
+                                Nothing new
+                            </div>
+                        </div>
+                    </div>
+					<div class="tab-pane" id="m_candidates_tab_2">
+                	    <div class="m-content">
+                	        <div *ngIf="applicationsaccepted" style="animation: fadeIn;">
+                        		<div class="row">
+                                    <div *ngFor="let app of applicationsaccepted" class="col-xl-4">
+                                        <div class="m-portlet">
+                                            <div class="m-portlet__head">
+                                                <div class="m-portlet__head-caption">
+                                                    <div class="m-portlet__head-title">
+                                                        <span class="m-portlet__head-icon">
+                                                            <i class="fa fa-thumb-tack"></i>
+                                                        </span>
+                                                        <h3 class="m-portlet__head-text">
+                                                            <div class="text" > {{app.job}}</div>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="m-portlet__body">
+                                                <div class="m-scrollable" data-max-height="200" data-scrollable="true" data-scrollbar-shown="true">
+
+                                                    Status: {{app.status}}<br>
+                                                    User: {{app.fromUniUser}}
+
+                                                </div>
+                                            </div>
+                                            <div class="m-portlet__foot">
+                                                 <div class="row align-items-center">
+                                                     <div class="col-lg-12">
+                                                          <button class="btn btn-success" type="submit" (click)="finish(app)">
+                                                                 Finish
+                                                          </button>
+                                                     </div>
+                                                 </div>
+                                            </div>
+                                        </div>
+                        	        </div>
+                        	    </div>
+                        	</div>
+                        	<div *ngIf="applicationsaccepted.length == 0" style="animation: fadeIn;">
+                                                            Nothing new
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="m_candidates_tab_3">
+                	    <div class="m-content">
+                	        <div *ngIf="applicationsrejected" style="animation: fadeIn;">
+                        		<div class="row">
+                                    <div *ngFor="let app of applicationsrejected" class="col-xl-4">
+                                        <div class="m-portlet">
+                                            <div class="m-portlet__head">
+                                                <div class="m-portlet__head-caption">
+                                                    <div class="m-portlet__head-title">
+                                                        <span class="m-portlet__head-icon">
+                                                            <i class="fa fa-thumb-tack"></i>
+                                                        </span>
+                                                        <h3 class="m-portlet__head-text">
+                                                            <div class="text" > {{app.job}}</div>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="m-portlet__body">
+                                                <div class="m-scrollable" data-max-height="200" data-scrollable="true" data-scrollbar-shown="true">
+
+                                                    Status: {{app.status}}<br>
+                                                    User: {{app.fromUniUser}}
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                        	        </div>
+                        	    </div>
+                        	</div>
+                        	<div *ngIf="applicationsrejected.length == 0" style="animation: fadeIn;">
+                                                            Nothing new
+                            </div>
+                        </div>
+                    </div>
+					<div class="tab-pane" id="m_candidates_tab_4">
+                	    <div class="m-content">
+                	        <div *ngIf="applicationsfinished" style="animation: fadeIn;">
+                        		<div class="row">
+                                    <div *ngFor="let app of applicationsfinished" class="col-xl-4">
+                                        <div class="m-portlet">
+                                            <div class="m-portlet__head">
+                                                <div class="m-portlet__head-caption">
+                                                    <div class="m-portlet__head-title">
+                                                        <span class="m-portlet__head-icon">
+                                                            <i class="fa fa-thumb-tack"></i>
+                                                        </span>
+                                                        <h3 class="m-portlet__head-text">
+                                                            <div class="text" > {{app.job}}</div>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="m-portlet__body">
+                                                <div class="m-scrollable" data-max-height="200" data-scrollable="true" data-scrollbar-shown="true">
+
+                                                    Status: {{app.status}}<br>
+                                                    User: {{app.fromUniUser}}
+
+                                                </div>
+                                            </div>
+                                            <div class="m-portlet__foot">
+                                                 <div class="row align-items-center">
+                                                     <div class="col-lg-12">
+                                                          <button class="btn btn-accent" type="submit" (click)="reject(app)">
+                                                                Review
+                                                          </button>
+                                                     </div>
+                                                 </div>
+                                            </div>
+                                        </div>
+                        	        </div>
+                        	    </div>
+                        	</div>
+                        	<div *ngIf="applicationsfinished.length == 0" style="animation: fadeIn;">
+                                                            Nothing new
+                                                        </div>
+                        </div>
+                    </div>
+                </div>
 			</div>
-		</div>
-	</div>
+    </div>
 </div>
