@@ -1,0 +1,44 @@
+<div class="m-content">
+	<!--begin::Portlet-->
+	<div *ngIf="application">
+	<div class="m-portlet">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text">
+						Review {{application.toUniUser.firstname}} for {{job.description}} job
+					</h3>
+				</div>
+				 <ng-template #alertJob> </ng-template>
+			</div>
+		</div>
+		<!--begin::Form-->
+		<form class="m-form m-form--fit m-form--label-align-right">
+			<div class="m-portlet__body">
+				<div class="form-group m-form__group row">
+					<div class="col-lg-7 col-md-7 col-sm-12">
+						<div class="summernote" ></div>
+					</div>
+				</div>
+			</div>
+			<div class="m-portlet__foot m-portlet__foot--fit">
+				<div class="m-form__actions m-form__actions">
+					<div class="row">
+						<div class="col-lg-9 ml-lg-auto">
+							<a href="" class="btn btn-outline-primary m-btn m-btn--pill m-btn--wide btn-sm" (click)="addJob(cost,location,hpw,startDate,endDate)">
+                                Submit
+                            </a>
+							<a href="" class="btn btn-outline-metal m-btn m-btn--pill m-btn--wide btn-sm">
+                                Cancel
+                            </a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</form>
+		<!--end::Form-->
+	</div>
+	</div>
+	<!--end::Portlet-->
+</div>

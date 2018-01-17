@@ -13,6 +13,7 @@ import { GlobalErrorHandler } from "./_services/error-handler.service";
 import {JobsService} from "./auth/_services/jobs.service";
 import { FormsModule } from '@angular/forms';
 import {RequestService} from "./auth/_services/request.service";
+import { ReviewComponent } from './theme/pages/review/review.component';
 
 
 @NgModule({

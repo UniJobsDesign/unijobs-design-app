@@ -3,6 +3,7 @@ import {JobsService} from "../../../auth/_services/jobs.service";
 import {RequestService} from "../../../auth/_services/request.service";
 import {Job} from "../../../auth/_models/job";
 import {Request} from "../../../auth/_models/request";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-jobapplications',
@@ -23,7 +24,7 @@ export class JobapplicationsComponent implements OnInit {
     whatever: string;
 
 
-  constructor(private requestService: RequestService, private jobService: JobsService) { }
+  constructor(private requestService: RequestService, private jobService: JobsService,private router: Router) { }
 
   ngOnInit() {
       this.loadPending();
@@ -124,7 +125,9 @@ export class JobapplicationsComponent implements OnInit {
         console.log("finished",this.jobsfinished);
     }
 
-
+    review(job,app){
+        this.router.navigate(['review',job.id,app.id]);
+    }
 
 
 }

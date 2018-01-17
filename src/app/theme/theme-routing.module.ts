@@ -434,6 +434,10 @@ const routes: Routes = [
                 "loadChildren": ".\/pages\/candidates\/candidates.module#CandidatesModule"
             },
             {
+                "path": "review/:jobid/:appid",
+                "loadChildren": ".\/pages\/review\/review.module#ReviewModule"
+            },
+            {
                 "path": "",
                 "redirectTo": "index",
                 "pathMatch": "full"

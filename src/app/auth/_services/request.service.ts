@@ -33,6 +33,15 @@ export class RequestService {
   }
 
 
+  public getById(requestId:number) : Observable<Request> {
+    const creds = 'access_token=' + localStorage.getItem('token');
+    const getUrl = `${this.url}/byId/${requestId}?${creds}`;
+    console.log(getUrl);
+    return this.http.get(getUrl).map(this.handleDataR).catch(this.handleError);
+
+  }
+
+
 
 
 
@@ -46,6 +55,12 @@ export class RequestService {
         error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg); // log to console instead
     return Observable.throw(errMsg);
+  }
+
+
+  private handleDataR(res: Response) {
+    const body = res.json();
+    return body;
   }
 
   requestJob(jobid: number)
