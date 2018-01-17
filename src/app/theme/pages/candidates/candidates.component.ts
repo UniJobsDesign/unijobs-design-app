@@ -24,6 +24,7 @@ export class CandidatesComponent implements OnInit {
     this.loadAccepted();
     this.loadRejected();
     this.loadFinished();
+    //console.log("finished:", this.applicationsfinished);
   }
 
 

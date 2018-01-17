@@ -16,10 +16,11 @@ export class RequestService {
   private url = 'http://localhost:8080/api/request';
 
 
-  public getRequests(): Observable<Request[]> {
+  public getRequests(status:string): Observable<Request[]> {
     const creds = 'access_token=' + localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
-    const getUrl = `${this.url}/requestsFrom/${userId}?${creds}`;
+    const getUrl = `${this.url}/requestsFromByStatus/${userId}/${status}?${creds}`;
+    console.log("get", getUrl);
     return this.http.get(getUrl).map(this.handleData).catch(this.handleError);
   }
 
@@ -30,6 +31,8 @@ export class RequestService {
     const getUrl = `${this.url}/requestsByStatus/${userId}/${status}?${creds}`;
     return this.http.get(getUrl).map(this.handleData).catch(this.handleError);
   }
+
+
 
 
 
