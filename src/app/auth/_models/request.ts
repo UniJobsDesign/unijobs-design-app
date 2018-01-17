@@ -4,9 +4,9 @@ import {User} from "./user";
  */
 export class Request {
     id:number;
-    fromUniUser:number;
+    fromUniUser:User;
     job: number;
-    toUniUser:number;
+    toUniUser:User;
     status:String
 
 }
