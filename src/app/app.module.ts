@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import {RequestService} from "./auth/_services/request.service";
 import { GuestJobsService} from "./auth/_services/guest_jobs.service";
 import { ReviewComponent } from './theme/pages/review/review.component';
+import {ReviewService} from "./auth/_services/review.service";
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { ReviewComponent } from './theme/pages/review/review.component';
         AuthModule,
         FormsModule
     ],
-    providers: [ScriptLoaderService, { provide: ErrorHandler, useClass: GlobalErrorHandler }, JobsService,RequestService, GuestJobsService],
+    providers: [ScriptLoaderService, { provide: ErrorHandler, useClass: GlobalErrorHandler }, JobsService,RequestService, GuestJobsService, ReviewService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

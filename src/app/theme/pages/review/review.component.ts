@@ -5,6 +5,8 @@ import {ActivatedRoute, Params} from "@angular/router";
 import {JobsService} from "../../../auth/_services/jobs.service";
 import {RequestService} from "../../../auth/_services/request.service";
 import {ScriptLoaderService} from "../../../_services/script-loader.service";
+import {Review} from "../../../auth/_models/review";
+import {ReviewService} from "../../../auth/_services/review.service";
 
 @Component({
     selector: ".m-grid__item.m-grid__item--fluid.m-wrapper",
@@ -15,11 +17,14 @@ export class ReviewComponent implements OnInit, AfterViewInit {
 
     application: Request;
     job: Job;
+    stars: number = 0;
+
 
     constructor(private _script: ScriptLoaderService,
                 private route: ActivatedRoute,
                 private jobService: JobsService,
-                private requestService: RequestService,) {}
+                private requestService: RequestService,
+                private reviewService: ReviewService) {}
 
     ngOnInit() {
         this.route.params.
@@ -44,8 +49,29 @@ export class ReviewComponent implements OnInit, AfterViewInit {
     }
 
     review(){
-        var description = document.getElementsByClassName('acidjs-rating-stars');
-        console.log("jhkjhkkj", description);
+        var description = document.getElementsByClassName('note-editable')[0];
         console.log("review", this.application.toUniUser.id);
+        console.log("desc", description.innerHTML.toString());
+        console.log("stars", this.stars);
+
+        var review: Review = <Review> {
+            id: null,
+            stars: this.stars,
+            reviewedId: this.application.toUniUser.id,
+            reviewerId: this.application.fromUniUser.id,
+            comment: description.innerHTML.toString(),
+        };
+
+        if(description.innerHTML.toString().length == 0){
+            console.log("NUUU LENGTH E 0");
+        } else {
+            console.log(review);
+            this.reviewService.createReview(review);
+        }
+
+    }
+
+    setStars(nr) {
+        this.stars = nr;
     }
 }
