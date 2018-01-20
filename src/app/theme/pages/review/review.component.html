@@ -73,14 +73,20 @@
 				</div>
 			</div>
 		</div>
-	<div class="acidjs-rating-stars">
-        <form>
-            <input type="radio" name="group-1" id="group-1-0" value="5" /><label for="group-1-0"></label><!--
-            --><input type="radio" name="group-1" id="group-1-1" value="4" /><label for="group-1-1"></label><!--
-            --><input type="radio" name="group-1" id="group-1-2" value="3" /><label for="group-1-2"></label><!--
-            --><input type="radio" name="group-1" id="group-1-3" value="2" /><label for="group-1-3"></label><!--
-            --><input type="radio" name="group-1" id="group-1-4"  value="1" /><label for="group-1-4"></label>
-        </form>
+	<div class="form-group m-form__group row">
+    	<label for="example-text-input" class="col-2 col-form-label" style="padding-left: 50px;
+                                                           padding-top: 30px;">
+    				Rating
+    	</label>
+	    <div class="acidjs-rating-stars">
+            <form>
+            <input (click)="setStars(5)"  type="radio" name="group-1" id="group-1-0" value="5" /><label for="group-1-0"></label><!--
+            --><input (click)="setStars(4)" type="radio" name="group-1" id="group-1-1" value="4" /><label for="group-1-1"></label><!--
+            --><input (click)="setStars(3)" type="radio" name="group-1" id="group-1-2" value="3" /><label for="group-1-2"></label><!--
+            --><input (click)="setStars(2)"  type="radio" name="group-1" id="group-1-3" value="2" /><label for="group-1-3"></label><!--
+            --><input (click)="setStars(1)"  type="radio" name="group-1" id="group-1-4"  value="1" /><label for="group-1-4"></label>
+            </form>
+        </div>
     </div>
 		<!--begin::Form-->
 		<form class="m-form m-form--fit m-form--label-align-right">
@@ -95,7 +101,7 @@
 				<div class="m-form__actions m-form__actions">
 					<div class="row">
 						<div class="col-lg-9 ml-lg-auto">
-							<a href="" class="btn btn-outline-primary m-btn m-btn--pill m-btn--wide btn-sm" (click)="review()">
+							<a href="" class="btn btn-outline-primary m-btn m-btn--pill m-btn--wide btn-sm" (click)="review(formstar)">
                                 Submit
                             </a>
 							<a href="" class="btn btn-outline-metal m-btn m-btn--pill m-btn--wide btn-sm">
