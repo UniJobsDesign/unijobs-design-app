@@ -5,6 +5,8 @@ import {UserService} from "../../../../../auth/_services/user.service";
 import {Job} from "../../../../../auth/_models/job";
 import {JobsService} from "../../../../../auth/_services/jobs.service";
 import {Skill} from "../../../../../auth/_models/skill";
+import {Review} from "../../../../../auth/_models/review";
+import {ReviewService} from "../../../../../auth/_services/review.service";
 
 
 @Component({
@@ -23,8 +25,13 @@ export class HeaderProfileComponent implements OnInit {
     selectedJob: Job = new Job();
     successfulUpdated: boolean;
     errorUpdated: boolean;
+    reviews: Review[] = [];
 
-    constructor(private userService: UserService, private jobService: JobsService) {
+
+
+    constructor(private userService: UserService,
+                private jobService: JobsService,
+                private reviewService: ReviewService) {
     }
 
     ngOnInit() {
@@ -37,6 +44,11 @@ export class HeaderProfileComponent implements OnInit {
             this.skills = skills;
             console.log(this.skills);
         });
+
+        this.reviewService.getReviews().subscribe(rev => {
+            this.reviews = rev;
+            console.log(this.reviews);
+        })
 
         this.loadUserDetails();
 

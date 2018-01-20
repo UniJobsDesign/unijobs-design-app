@@ -177,7 +177,7 @@
 							</li>
 							<li class="nav-item m-tabs__item">
 								<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_2" role="tab">
-									Messages
+									Reviews
 								</a>
 							</li>
 							<li class="nav-item m-tabs__item">
@@ -447,22 +447,36 @@
 						</form>
 					</div>
 					<div class="tab-pane" id="m_user_profile_tab_2">
-					    <form class="m-form m-form--fit m-form--label-align-right">
-                    		<div class="m-portlet__body">
-                    	        <div class="form-group m-form__group m--margin-top-10 m--hide">
-                    		        <div class="alert m-alert m-alert--default" role="alert">
-                    			        The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
-                    		        </div>
-                    			</div>
-                                <div class="form-group m-form__group row">
-                                	<div class="col-10 ml-auto">
-                                		<h3 class="m-form__section">
-                                			No messages
-                                		</h3>
-                                	</div>
+					     <div class="m-content">
+					        <div *ngIf="reviews"  style="animation: fadeIn;">
+					            <div *ngIf="reviews.length != 0; else notTrue">
+                                    <div *ngFor="let review of reviews" >
+                                        <div class="row">
+                                            <div class="m-portlet" style="width: 100%">
+                                                <div class="m-portlet__body">
+                                                     <div class="m-scrollable" data-max-height="500" data-scrollable="true" data-scrollbar-shown="true">
+                                                         <div style="display: flex;">
+                                                         Rating :  <br>
+                                                         <div style="padding-left: 37px;">{{review.stars}} / 5</div>
+                                                         </div>
+                                                         <div style="display:flex">
+                                                         Description:    <div class="summernote-text" style="padding-left: 10px;" [innerHTML]="review.comment"></div>
+                                                         </div>
+                                                     </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <ng-template #notTrue>
+                                    <div class="col-10 ml-auto">
+                                        <h5 class="m-form__section">
+                                            No reviews yet
+                                        </h5>
+                                    </div>
+                                </ng-template>
                             </div>
-                         </form>
+					     </div>
                     </div>
 					<div class="tab-pane" id="m_user_profile_tab_3">
                 	    <div class="m-content">
