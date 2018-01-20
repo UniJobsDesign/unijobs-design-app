@@ -22043,3 +22043,8 @@ button.toast-close-button {
 
 .icons8-arrows-04:before {
   content: "\f1b4"; }
+
+.summernote-text p {
+  display: inline;
+  margin-top: 1rem !important;
+}

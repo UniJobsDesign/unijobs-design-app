@@ -24,6 +24,7 @@ export class JobapplicationsComponent implements OnInit {
     whatever: string;
     selectedJob: Job = new Job();
 
+
   constructor(private requestService: RequestService, private jobService: JobsService,private router: Router) { }
 
   ngOnInit() {

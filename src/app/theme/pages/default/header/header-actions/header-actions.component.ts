@@ -17,6 +17,9 @@ import {Skill} from "../../../../../auth/_models/skill";
 export class HeaderActionsComponent implements OnInit, AfterViewInit {
     skills: Skill[] = [];
     selected_skills: Skill[] = [];
+    addJobError: boolean;
+    addJobSuccess: boolean;
+    addJobProcessing: boolean;
 
     constructor(private _script: ScriptLoaderService,
                 private jobService: JobsService,
@@ -51,9 +54,7 @@ export class HeaderActionsComponent implements OnInit, AfterViewInit {
     }
 
     addJob(cost,location,hpw,startDate,endDate){
-
-
-
+        this.addJobProcessing = true;
         var description = document.getElementsByClassName('note-editable')[0];
 
         console.log("LOCATION:",location.value);
@@ -81,24 +82,20 @@ export class HeaderActionsComponent implements OnInit, AfterViewInit {
 
         this.jobService.addJob(job1).subscribe(
             data => {
-                this._router.navigateByUrl('/index');
+                this.addJobProcessing = null;
+                this.addJobSuccess = true;
+                setTimeout(() => this.addJobSuccess = null, 3000);
+                setTimeout(() => this._router.navigateByUrl('/index'), 3000);
             },
             error =>  {
-                console.log("!!!!!!!");
-                this.showAlert('alertJob');
-                this._alertService.error("Invalid login credentials")
+                this.addJobProcessing = null;
+                this.addJobError = true;
+                setTimeout(() => this.addJobError = null, 3000);
             });
+}
 
         //this.job = new Job(1,description,hpw,cost,1,location,startDate,endDate);
 
         //console.log("USERID",userId);
-    }
-
-    showAlert(target) {
-        this[target].clear();
-        let factory = this.cfr.resolveComponentFactory(AlertComponent);
-        let ref = this[target].createComponent(factory);
-        ref.changeDetectorRef.detectChanges();
-    }
 
 }

@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Job} from "../../../auth/_models/job";
 import {Request} from "../../../auth/_models/request";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {JobsService} from "../../../auth/_services/jobs.service";
 import {RequestService} from "../../../auth/_services/request.service";
 import {ScriptLoaderService} from "../../../_services/script-loader.service";
@@ -18,13 +18,15 @@ export class ReviewComponent implements OnInit, AfterViewInit {
     application: Request;
     job: Job;
     stars: number = 0;
-
+    reviewSuccess: boolean;
+    reviewError: boolean;
 
     constructor(private _script: ScriptLoaderService,
                 private route: ActivatedRoute,
                 private jobService: JobsService,
                 private requestService: RequestService,
-                private reviewService: ReviewService) {}
+                private reviewService: ReviewService,
+                private _router: Router) {}
 
     ngOnInit() {
         this.route.params.
@@ -66,7 +68,16 @@ export class ReviewComponent implements OnInit, AfterViewInit {
             console.log("NUUU LENGTH E 0");
         } else {
             console.log(review);
-            this.reviewService.createReview(review);
+            this.reviewService.createReview(review).subscribe(data => {
+                this.reviewSuccess = true;
+                setTimeout(() => this.reviewSuccess = null, 3000);
+                setTimeout(() => this._router.navigateByUrl('/index'), 500);
+
+
+            }, error => {
+                this.reviewError = true;
+                setTimeout(() => this.reviewError = null, 3000);
+            });
         }
 
     }
