@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {RequestService} from "../../../auth/_services/request.service";
 import {Request} from "../../../auth/_models/request";
 import {async} from "rxjs/scheduler/async";
+import {Job} from "../../../auth/_models/job";
+import {JobsService} from "../../../auth/_services/jobs.service";
 
 @Component({
   selector: '.m-wrapper',
@@ -14,8 +16,13 @@ export class CandidatesComponent implements OnInit {
   applicationsaccepted: Request[] = [];
   applicationsrejected: Request[] = [];
   applicationsfinished: Request[] = [];
+  jobspending: Job[] = [];
+  jobsaccepted: Job[] = [];
+  jobsrejected: Job[] = [];
+  jobsfinished: Job[] = [];
 
-  constructor(private requestService: RequestService) {
+  constructor(private requestService: RequestService,
+              private jobService: JobsService) {
 
   }
 
@@ -32,6 +39,16 @@ export class CandidatesComponent implements OnInit {
     this.requestService.getUserRequests('PENDING').subscribe(jbs => {
       this.applicationspending = jbs;
       console.log(this.applicationspending);
+      let jo: Job[] = [];
+      for (let entry of this.applicationspending) {
+        //console.log(entry.job);
+        this.jobService.getJobById(entry.job).subscribe(jb => {
+          //console.log(jb.description);
+          jo.push(jb);
+          //console.log("----",this.jobspending)
+        });// 1, "string", false
+      }
+      this.jobspending = jo;
     });
   }
 
@@ -39,6 +56,16 @@ export class CandidatesComponent implements OnInit {
     this.requestService.getUserRequests('ACCEPTED').subscribe(jbs => {
       this.applicationsaccepted = jbs;
       console.log(this.applicationsaccepted);
+      let jo: Job[] = [];
+      for (let entry of this.applicationsaccepted) {
+        //console.log(entry.job);
+        this.jobService.getJobById(entry.job).subscribe(jb => {
+          //console.log(jb.description);
+          jo.push(jb);
+          //console.log("----",this.jobsaccepted)
+        });// 1, "string", false
+      }
+      this.jobsaccepted = jo;
     });
   }
 
@@ -46,6 +73,16 @@ export class CandidatesComponent implements OnInit {
     this.requestService.getUserRequests('REJECTED').subscribe(jbs => {
       this.applicationsrejected = jbs;
       console.log(this.applicationsrejected);
+      let jo: Job[] = [];
+      for (let entry of this.applicationsrejected) {
+        //console.log(entry.job);
+        this.jobService.getJobById(entry.job).subscribe(jb => {
+          //console.log(jb.description);
+          jo.push(jb);
+          //console.log("----",this.jobsrejected)
+        });// 1, "string", false
+      }
+      this.jobsrejected = jo;
     });
   }
 
@@ -53,6 +90,16 @@ export class CandidatesComponent implements OnInit {
     this.requestService.getUserRequests('FINISHED').subscribe(jbs => {
       this.applicationsfinished = jbs;
       console.log(this.applicationsfinished);
+      let jo: Job[] = [];
+      for (let entry of this.applicationsfinished) {
+        //console.log(entry.job);
+        this.jobService.getJobById(entry.job).subscribe(jb => {
+          //console.log(jb.description);
+          jo.push(jb);
+          //console.log("----",this.jobsfinished)
+        });// 1, "string", false
+      }
+      this.jobsfinished = jo;
     });
   }
 

@@ -60,7 +60,8 @@ export class JobsComponent implements OnInit {
         });
     }
 
-    next() {
+    next(searchfilter) {
+        console.log("seadasdsdada",searchfilter);
         this.jobService.getJobs(this.pageNo).subscribe(jbs => {
             if (jbs.length !== 0) {
                 this.jobs = jbs;

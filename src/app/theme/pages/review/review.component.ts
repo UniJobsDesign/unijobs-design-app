@@ -44,6 +44,8 @@ export class ReviewComponent implements OnInit, AfterViewInit {
     }
 
     review(){
+        var description = document.getElementsByClassName('acidjs-rating-stars');
+        console.log("jhkjhkkj", description);
         console.log("review", this.application.toUniUser.id);
     }
 }
