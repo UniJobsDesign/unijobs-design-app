@@ -48,6 +48,7 @@
 					<div class="tab-pane active" id="m_candidates_tab_1">
                 	    <div class="m-content">
                 	        <div *ngIf="jobspending" style="animation: fadeIn;">
+                	        <div *ngIf="jobspending.length!=0; else notTrue">
                         		<div class="row">
                                     <div *ngFor="let app of jobspending; let i = index" class="col-xl-4">
                                         <div class="m-portlet">
@@ -89,16 +90,19 @@
                         	        </div>
                         	    </div>
                         	</div>
-                            <div *ngIf="applicationspending.length == 0" style="animation: fadeIn;">
-                                Nothing new
-                            </div>
+                        	</div>
+                            <ng-template #notTrue>
+                                                           Nothing new
+                                                       </ng-template>
                         </div>
                     </div>
 					<div class="tab-pane" id="m_candidates_tab_2">
                 	    <div class="m-content">
-                	        <div *ngIf="applicationsaccepted" style="animation: fadeIn;">
+                	        <div *ngIf="jobsaccepted" style="animation: fadeIn;">
+                	         <div *ngIf="jobsaccepted.length!=0; else notTrue">
+
                         		<div class="row">
-                                    <div *ngFor="let app of applicationsaccepted; let i = index" class="col-xl-4">
+                                    <div *ngFor="let app of jobsaccepted; let i = index" class="col-xl-4">
                                         <div class="m-portlet">
                                             <div class="m-portlet__head">
                                                 <div class="m-portlet__head-caption">
@@ -107,7 +111,7 @@
                                                             <i class="fa fa-thumb-tack"></i>
                                                         </span>
                                                         <h3 class="m-portlet__head-text">
-                                                            <div class="text" > {{app.job}}</div>
+                                                            <div class="text" > {{app.description}}</div>
                                                         </h3>
                                                     </div>
                                                 </div>
@@ -116,14 +120,14 @@
                                                 <div class="m-scrollable" data-max-height="200" data-scrollable="true" data-scrollbar-shown="true">
 
 
-                                                    User: {{applicationspending[i].fromUniUser.firstname}} {{applicationspending[i].fromUniUser.lastname}}
+                                                    User: {{applicationsaccepted[i].fromUniUser.firstname}} {{applicationsaccepted[i].fromUniUser.lastname}}
 
                                                 </div>
                                             </div>
                                             <div class="m-portlet__foot">
                                                  <div class="row align-items-center">
                                                      <div class="col-lg-12">
-                                                          <button class="btn btn-success" type="submit" (click)="finish(app)">
+                                                          <button class="btn btn-success" type="submit" (click)="finish(applicationsaccepted[i])">
                                                                  Finish
                                                           </button>
                                                      </div>
@@ -132,17 +136,20 @@
                                         </div>
                         	        </div>
                         	    </div>
+                        	  </div>
                         	</div>
-                        	<div *ngIf="applicationsaccepted.length == 0" style="animation: fadeIn;">
+                        	<ng-template #notTrue>
                                                             Nothing new
-                            </div>
+                                                        </ng-template>
                         </div>
                     </div>
                     <div class="tab-pane" id="m_candidates_tab_3">
                 	    <div class="m-content">
-                	        <div *ngIf="applicationsrejected" style="animation: fadeIn;">
+                	        <div *ngIf="jobsrejected" style="animation: fadeIn;">
+                	        <div *ngIf="jobsrejected.length != 0;else notTrue">
+
                         		<div class="row">
-                                    <div *ngFor="let app of applicationsrejected; let i = index" class="col-xl-4">
+                                    <div *ngFor="let app of jobsrejected; let i = index" class="col-xl-4">
                                         <div class="m-portlet">
                                             <div class="m-portlet__head">
                                                 <div class="m-portlet__head-caption">
@@ -160,7 +167,7 @@
                                                 <div class="m-scrollable" data-max-height="200" data-scrollable="true" data-scrollbar-shown="true">
 
 
-                                                    User: {{applicationspending[i].fromUniUser.firstname}} {{applicationspending[i].fromUniUser.lastname}}
+                                                    User: {{applicationsrejected[i].fromUniUser.firstname}} {{applicationsrejected[i].fromUniUser.lastname}}
 
                                                 </div>
                                             </div>
@@ -169,16 +176,18 @@
                         	        </div>
                         	    </div>
                         	</div>
-                        	<div *ngIf="applicationsrejected.length == 0" style="animation: fadeIn;">
+                        	</div>
+                        	<ng-template #notTrue>
                                                             Nothing new
-                            </div>
+                                                        </ng-template>
                         </div>
                     </div>
 					<div class="tab-pane" id="m_candidates_tab_4">
                 	    <div class="m-content">
-                	        <div *ngIf="applicationsfinished" style="animation: fadeIn;">
+                	        <div *ngIf="jobsfinished" style="animation: fadeIn;">
+                	        <div *ngIf="jobsfinished.length != 0; else notTrue">
                         		<div class="row">
-                                    <div *ngFor="let app of applicationsfinished; let i = index" class="col-xl-4">
+                                    <div *ngFor="let app of jobsfinished; let i = index" class="col-xl-4">
                                         <div class="m-portlet">
                                             <div class="m-portlet__head">
                                                 <div class="m-portlet__head-caption">
@@ -187,7 +196,7 @@
                                                             <i class="fa fa-thumb-tack"></i>
                                                         </span>
                                                         <h3 class="m-portlet__head-text">
-                                                            <div class="text" > {{app.job}}</div>
+                                                            <div class="text" > {{app.description}}</div>
                                                         </h3>
                                                     </div>
                                                 </div>
@@ -196,14 +205,14 @@
                                                 <div class="m-scrollable" data-max-height="200" data-scrollable="true" data-scrollbar-shown="true">
 
 
-                                                    User: {{applicationspending[i].fromUniUser.firstname}} {{applicationspending[i].fromUniUser.lastname}}
+                                                    User: {{applicationsfinished[i].fromUniUser.firstname}} {{applicationsfinished[i].fromUniUser.lastname}}
 
                                                 </div>
                                             </div>
                                             <div class="m-portlet__foot">
                                                  <div class="row align-items-center">
                                                      <div class="col-lg-12">
-                                                          <button class="btn btn-accent" type="submit" (click)="reject(app)">
+                                                          <button class="btn btn-accent" type="submit" (click)="review(applicationsfinished[i])">
                                                                 Review
                                                           </button>
                                                      </div>
@@ -213,9 +222,10 @@
                         	        </div>
                         	    </div>
                         	</div>
-                        	<div *ngIf="applicationsfinished.length == 0" style="animation: fadeIn;">
-                                                            Nothing new
-                                                        </div>
+                        	</div>
+                        	<ng-template #notTrue>
+                                                                 Nothing new
+                                                            </ng-template>
                         </div>
                     </div>
                 </div>
