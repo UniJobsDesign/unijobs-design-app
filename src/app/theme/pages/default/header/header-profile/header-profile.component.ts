@@ -102,7 +102,6 @@ export class HeaderProfileComponent implements OnInit {
                 this.loadUserDetails();
                 this.successfulUpdated = true;
                 setTimeout(() => this.successfulUpdated = null, 3000);
-                console.log(jbs);
             }, error => {
                 this.errorUpdated = true;
                 setTimeout(() => this.errorUpdated = null, 3000);
