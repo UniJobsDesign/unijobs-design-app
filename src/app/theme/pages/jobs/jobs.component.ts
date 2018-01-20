@@ -4,7 +4,7 @@ import {JobsService} from "../../../auth/_services/jobs.service";
 import {RequestService} from "../../../auth/_services/request.service";
 
 @Component({
-    selector: ".m-wrapper",
+    selector: ".m-wrapper .m-grid__item.m-grid__item--fluid.m-wrapper",
     templateUrl: "./jobs.component.html",
     encapsulation: ViewEncapsulation.None,
 })
@@ -13,6 +13,7 @@ export class JobsComponent implements OnInit {
     selectedDropDown = 'Description';
     jobs: Job[];
     whatever: string;
+    selectedJob: Job = new Job();
 
     constructor(private jobService: JobsService) {
     }
@@ -97,6 +98,12 @@ export class JobsComponent implements OnInit {
             //this.guestJobs = jbs;
            console.log(jbs);
         });
+    }
+
+    selectJob(job: Job) {
+        job.startDate = job.startDate.substring(0, 10);
+        job.endDate = job.endDate.substring(0, 10);
+        this.selectedJob = job;
     }
 
 }
