@@ -20608,9 +20608,20 @@ body.m-content--skin-light2 {
 }
 
 .m-list-badge .m-list-badge__items .m-list-badge__item_clicked {
+  -webkit-border-radius: 1.43rem;
+  -moz-border-radius: 1.43rem;
+  -ms-border-radius: 1.43rem;
+  -o-border-radius: 1.43rem;
+  border-radius: 1.43rem;
+  padding: .33rem 1.14rem .33rem 1.14rem;
+  font-size: .85rem;
+  font-weight: 500;
+  margin-right: .4rem;
+  text-decoration: none;
   color: #ffffff;
   background-color: #6573e0;
 }
+
 
 .m-list-badge .m-list-badge__items .m-list-badge__item:hover {
   color: #ffffff;

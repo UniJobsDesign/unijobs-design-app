@@ -7,5 +7,5 @@ export class Job {
     location: string;
     startDate: string;
     endDate: string;
-    skills: number[] = new Array();
+    skillIds: number[] = new Array();
 }

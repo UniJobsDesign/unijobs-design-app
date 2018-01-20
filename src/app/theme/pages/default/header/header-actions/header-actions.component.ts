@@ -16,6 +16,7 @@ import {Skill} from "../../../../../auth/_models/skill";
 })
 export class HeaderActionsComponent implements OnInit, AfterViewInit {
     skills: Skill[];
+    selected_skills: Skill[] = [];
 
     constructor(private _script: ScriptLoaderService,
                 private jobService: JobsService,
@@ -30,10 +31,23 @@ export class HeaderActionsComponent implements OnInit, AfterViewInit {
         })
     }
 
+
     ngAfterViewInit() {
         this._script.load('.m-grid__item.m-grid__item--fluid.m-wrapper',
             'assets/demo/default/custom/header/actions.js');
+    }
 
+    isSkillSelected(skill): boolean{
+        return this.selected_skills.includes(skill);
+    }
+
+    selectSkill(skill) {
+        this.selected_skills.push(skill);
+    }
+
+    removeSkill(skill) {
+        const index = this.selected_skills.indexOf(skill);
+        this.selected_skills.splice(index, 1);
     }
 
     addJob(cost,location,hpw,startDate,endDate){
@@ -60,7 +74,7 @@ export class HeaderActionsComponent implements OnInit, AfterViewInit {
                 location: location.value,
                 startDate: startDate.value,
                 endDate: endDate.value,
-                skills: [],
+                skillIds: this.selected_skills.map(skill => skill.id)
             };
 
         console.log("job1111111",job1);
