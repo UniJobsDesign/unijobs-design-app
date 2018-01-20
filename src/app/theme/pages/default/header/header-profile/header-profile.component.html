@@ -307,6 +307,26 @@
 										<input class="form-control m-input" #phone id="phone" type="text" value="{{user.phone}}">
 									</div>
 								</div>
+
+
+								<div class="form-group m-form__group row">
+									<label class="col-form-label col-2">
+										Skills
+									</label>
+										<div class="m-list-badge m--margin-top-15">
+											<div class="m-list-badge__items">
+												<div *ngIf="skills" style="animation: fadeIn;">
+													<div class="row" style="padding-left:15px;">
+														<div *ngFor="let skill of skills" style="padding-bottom: 15px;">
+															<a *ngIf="isSkillSelected(skill)" (click)="removeSkill(skill)" href="#" class="m-list-badge__item_clicked">{{skill.description}}</a>
+															<a *ngIf="!isSkillSelected(skill)" (click)="selectSkill(skill)" href="#" class="m-list-badge__item">{{skill.description}}</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+								</div>
+
 								<div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
 								<div class="form-group m-form__group row">
 									<div class="col-10 ml-auto">

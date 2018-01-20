@@ -15,7 +15,7 @@ import {Skill} from "../../../../../auth/_models/skill";
     encapsulation: ViewEncapsulation.None,
 })
 export class HeaderActionsComponent implements OnInit, AfterViewInit {
-    skills: Skill[];
+    skills: Skill[] = [];
     selected_skills: Skill[] = [];
 
     constructor(private _script: ScriptLoaderService,

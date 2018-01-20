@@ -7,4 +7,5 @@ export class User {
     lastname: string;
     dob: string;
     phone: string;
+    skills: number[] = [];
 }
