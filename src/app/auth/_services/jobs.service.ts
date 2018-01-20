@@ -16,6 +16,7 @@ export class JobsService {
 
 
     private url = 'http://localhost:8080/api/job';
+    private skillUrl = 'http://localhost:8080/api/skill'
 
     public getJobs(page: number): Observable<Job[]> {
         const creds = 'access_token=' + localStorage.getItem('token');
@@ -38,6 +39,11 @@ export class JobsService {
 
     private handleData(res: Response) {
         const body = res.json().jobs;
+        return body;
+    }
+
+    private handleSkills(res: Response) {
+        const body = res.json().skills;
         return body;
     }
 
@@ -114,6 +120,12 @@ export class JobsService {
         console.log("Request job:",jobid);
 
         return this.http.post(getUrl, { headers: header }).map(this.handleDataR).catch(this.handleError);
+    }
+
+    getAllSkills() {
+        const creds = 'access_token=' + localStorage.getItem('token');
+        const getUrl = `${this.skillUrl}/skills?${creds}`;
+        return this.http.get(getUrl).map(this.handleSkills).catch(this.handleError);
     }
 
 

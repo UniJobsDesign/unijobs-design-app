@@ -15,20 +15,8 @@
     </div>
 </div>
 <div class="m-content" style="width: 90%; display: block; margin-left: auto; margin-right: auto;">
-    <div *ngIf="jobs" style="animation: fadeIn;">
+    <div *ngIf="guestJobs" style="animation: fadeIn;">
         <div class="input-group">
-            <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span id="search_concept">Description</span> <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li (click)="updateSelected('Location')"><a><i class="fa fa-angle-double-right"></i> Location</a>
-                    </li>
-                    <!--li (click)="updateSelected('name')"><a ><i class="fa fa-angle-double-right"></i> Name</a></li-->
-                    <li (click)="updateSelected('Description')"><a><i class="fa fa-angle-double-right"></i> Description</a>
-                    </li>
-                </ul>
-            </div>
             <input type="hidden" name="search_param" value="name" id="search_param">
             <input type="text" class="form-control" name="q" placeholder="Search.." id="search_key" value=""
                    [(ngModel)]='whatever' #searchinput>
@@ -40,9 +28,9 @@
         </div>
     </div>
     <br/>
-    <div *ngIf="jobs" style="animation: fadeIn;">
+    <div *ngIf="guestJobs" style="animation: fadeIn;">
         <div class="row">
-            <div *ngFor="let job of jobs" class="col-xl-4">
+            <div *ngFor="let job of guestJobs" class="col-xl-4">
                 <div class="m-portlet">
                     <div class="m-portlet__head">
                         <div class="m-portlet__head-caption">
@@ -77,12 +65,6 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
-            <div class="m-portlet__foot">
-                <a href="" class="btn btn-outline-metal m-btn m-btn--pill m-btn--air btn-sm" (click)="prev()"><</a>
-                {{pageNo}}
-                <a href="" class="btn btn-outline-metal m-btn m-btn--pill m-btn--air btn-sm" (click)="next()">></a>
 
             </div>
 

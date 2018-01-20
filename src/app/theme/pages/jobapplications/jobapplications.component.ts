@@ -6,7 +6,7 @@ import {Request} from "../../../auth/_models/request";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-jobapplications',
+  selector: '.m-wrapper',
   templateUrl: './jobapplications.component.html',
   styles: []
 })

@@ -426,6 +426,10 @@ const routes: Routes = [
                 "loadChildren": ".\/pages\/jobs\/jobs.module#JobsModule"
             },
             {
+                "path": "guest_jobs",
+                "loadChildren": "..\/auth\/guest_jobs\/guest_jobs.module#GuestJobsModule"
+            },
+            {
                 "path": "jobapplications",
                 "loadChildren": ".\/pages\/jobapplications\/jobapplications.module#JobapplicationsModule"
             },

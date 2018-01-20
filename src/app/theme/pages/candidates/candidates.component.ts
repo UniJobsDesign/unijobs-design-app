@@ -4,7 +4,7 @@ import {Request} from "../../../auth/_models/request";
 import {async} from "rxjs/scheduler/async";
 
 @Component({
-  selector: 'app-candidate',
+  selector: '.m-wrapper',
   templateUrl: './candidates.component.html',
   styles: []
 })

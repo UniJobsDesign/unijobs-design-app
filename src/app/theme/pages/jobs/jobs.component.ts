@@ -93,7 +93,7 @@ export class JobsComponent implements OnInit {
     apply(job: Job){
         console.log(job.id);
         this.jobService.requestJob(job.id).subscribe(jbs => {
-            //this.jobs = jbs;
+            //this.guestJobs = jbs;
            console.log(jbs);
         });
     }

@@ -13,6 +13,7 @@ import { GlobalErrorHandler } from "./_services/error-handler.service";
 import {JobsService} from "./auth/_services/jobs.service";
 import { FormsModule } from '@angular/forms';
 import {RequestService} from "./auth/_services/request.service";
+import { GuestJobsService} from "./auth/_services/guest_jobs.service";
 import { ReviewComponent } from './theme/pages/review/review.component';
 
 
@@ -30,7 +31,7 @@ import { ReviewComponent } from './theme/pages/review/review.component';
         AuthModule,
         FormsModule
     ],
-    providers: [ScriptLoaderService, { provide: ErrorHandler, useClass: GlobalErrorHandler }, JobsService,RequestService],
+    providers: [ScriptLoaderService, { provide: ErrorHandler, useClass: GlobalErrorHandler }, JobsService,RequestService, GuestJobsService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

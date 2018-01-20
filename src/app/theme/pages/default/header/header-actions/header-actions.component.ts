@@ -6,6 +6,7 @@ import {Job} from "../../../../../auth/_models/job";
 import { Router} from "@angular/router";
 import {AlertService} from "../../../../../auth/_services/alert.service";
 import {AlertComponent} from "../../../../../auth/_directives/alert.component";
+import {Skill} from "../../../../../auth/_models/skill";
 
 
 @Component({
@@ -14,6 +15,7 @@ import {AlertComponent} from "../../../../../auth/_directives/alert.component";
     encapsulation: ViewEncapsulation.None,
 })
 export class HeaderActionsComponent implements OnInit, AfterViewInit {
+    skills: Skill[];
 
     constructor(private _script: ScriptLoaderService,
                 private jobService: JobsService,
@@ -22,8 +24,12 @@ export class HeaderActionsComponent implements OnInit, AfterViewInit {
                 private cfr: ComponentFactoryResolver) {}
 
     ngOnInit() {
-
+        this.jobService.getAllSkills().subscribe(skills => {
+            this.skills = skills;
+            console.log(this.skills);
+        })
     }
+
     ngAfterViewInit() {
         this._script.load('.m-grid__item.m-grid__item--fluid.m-wrapper',
             'assets/demo/default/custom/header/actions.js');

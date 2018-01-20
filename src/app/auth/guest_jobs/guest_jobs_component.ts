@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import {Component, OnInit, ViewEncapsulation} from "@angular/core";
 import {Job} from "../_models/job";
-import {JobsService} from "../_services/jobs.service";
+import {GuestJobsService} from "../_services/guest_jobs.service";
 
 @Component({
     selector: 'app-guest-jobs',
@@ -11,38 +11,30 @@ import {JobsService} from "../_services/jobs.service";
 export class GuestJobsComponent implements OnInit {
     pageNo = 1;
     selectedDropDown = 'Description';
-    jobs: Job[];
+    guestJobs: Job[];
     whatever: string;
 
-    constructor(private jobService: JobsService) {
+    constructor(private guestJobService: GuestJobsService) {
     }
 
-    updateSelected(filterType: string) {
-        document.getElementById('search_concept').innerHTML = filterType;
-        this.selectedDropDown = filterType;
+    updateSelectedGuest(filterType: string) {
+        // document.getElementById('search_concept_guest').innerHTML = filterType;
+        // this.selectedDropDown = filterType;
     }
 
     ngOnInit() {
-        this.jobService.getAllJobs(this.pageNo).subscribe(jbs => {
-            this.jobs = jbs;
-            console.log(this.jobs);
+        this.guestJobService.getAllJobs(this.pageNo).subscribe(jbs => {
+            this.guestJobs = jbs;
+            console.log(this.guestJobs);
         });
     }
 
     filter(searchfilter: string) {
         switch (this.selectedDropDown) {
-            case 'Location':
-                console.log('case Location');
-                this.jobService.jobFilterByLocation(searchfilter).subscribe(
-                    filteredjobs => {
-                        this.jobs = filteredjobs;
-                    }
-                );
-                break;
             case 'Description':
-                this.jobService.jobFilterByDescription(searchfilter).subscribe(
+                this.guestJobService.jobFilterByDescription(searchfilter).subscribe(
                     filteredjobs => {
-                        this.jobs = filteredjobs;
+                        this.guestJobs = filteredjobs;
                     }
                 );
                 break;
@@ -54,17 +46,17 @@ export class GuestJobsComponent implements OnInit {
 
     clear() {
         this.whatever = '';
-        this.jobService.getAllJobs(this.pageNo).subscribe(jbs => {
-            this.jobs = jbs;
-            console.log(this.jobs);
+        this.guestJobService.getAllJobs(this.pageNo).subscribe(jbs => {
+            this.guestJobs = jbs;
+            console.log(this.guestJobs);
         });
     }
 
     next() {
-        this.jobService.getAllJobs(this.pageNo).subscribe(jbs => {
+        this.guestJobService.getAllJobs(this.pageNo).subscribe(jbs => {
             if (jbs.length !== 0) {
-                this.jobs = jbs;
-                console.log(this.jobs);
+                this.guestJobs = jbs;
+                console.log(this.guestJobs);
                 this.pageNo++;
             }
             else {
@@ -75,10 +67,10 @@ export class GuestJobsComponent implements OnInit {
 
     prev() {
         if (this.pageNo >= 1) {
-            this.jobService.getAllJobs(this.pageNo - 2).subscribe(jbs => {
+            this.guestJobService.getAllJobs(this.pageNo - 2).subscribe(jbs => {
                 if (jbs.length !== 0) {
-                    this.jobs = jbs;
-                    console.log(this.jobs);
+                    this.guestJobs = jbs;
+                    console.log(this.guestJobs);
                     this.pageNo--;
                 }
                 else {
