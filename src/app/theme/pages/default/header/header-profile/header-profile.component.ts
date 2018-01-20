@@ -20,8 +20,9 @@ export class HeaderProfileComponent implements OnInit {
     pageNo = 1;
     skills: Skill[];
     selected_skills: number[] = [];
-
-
+    selectedJob: Job = new Job();
+    successfulUpdated: boolean;
+    errorUpdated: boolean;
 
     constructor(private userService: UserService, private jobService: JobsService) {
     }
@@ -99,10 +100,14 @@ export class HeaderProfileComponent implements OnInit {
                 console.log(user2);
                 localStorage.setItem('user', JSON.stringify(user2));
                 this.loadUserDetails();
+                this.successfulUpdated = true;
+                setTimeout(() => this.successfulUpdated = null, 3000);
+                console.log(jbs);
+            }, error => {
+                this.errorUpdated = true;
+                setTimeout(() => this.errorUpdated = null, 3000);
             }
         );
-
-
     }
 
     next() {
@@ -131,5 +136,11 @@ export class HeaderProfileComponent implements OnInit {
         else {
             console.log("first page");
         }
+    }
+
+    selectJob(job: Job) {
+        job.startDate = job.startDate.substring(0, 10);
+        job.endDate = job.endDate.substring(0, 10);
+        this.selectedJob = job;
     }
 }

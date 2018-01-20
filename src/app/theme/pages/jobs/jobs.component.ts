@@ -2,11 +2,12 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Job} from "../../../auth/_models/job";
 import {JobsService} from "../../../auth/_services/jobs.service";
 import {RequestService} from "../../../auth/_services/request.service";
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
     selector: ".m-wrapper .m-grid__item.m-grid__item--fluid.m-wrapper",
     templateUrl: "./jobs.component.html",
-    encapsulation: ViewEncapsulation.None,
+    encapsulation: ViewEncapsulation.None
 })
 export class JobsComponent implements OnInit {
     pageNo = 1;
@@ -14,6 +15,8 @@ export class JobsComponent implements OnInit {
     jobs: Job[];
     whatever: string;
     selectedJob: Job = new Job();
+    successfulApplied: boolean;
+    errorApplied: boolean;
 
     constructor(private jobService: JobsService) {
     }
@@ -24,7 +27,7 @@ export class JobsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.jobService.getJobs(this.pageNo).subscribe(jbs => {
+        this.jobService.getJobs(this.pageNo-1).subscribe(jbs => {
             this.jobs = jbs;
             console.log(this.jobs);
         });
@@ -62,6 +65,7 @@ export class JobsComponent implements OnInit {
     }
 
     next(searchfilter) {
+        console.log("Page number: ", this.pageNo);
         console.log("seadasdsdada",searchfilter);
         this.jobService.getJobs(this.pageNo).subscribe(jbs => {
             if (jbs.length !== 0) {
@@ -76,7 +80,8 @@ export class JobsComponent implements OnInit {
     }
 
     prev() {
-        if (this.pageNo >= 1) {
+        console.log("Page number: ", this.pageNo);
+        if (this.pageNo > 1) {
             this.jobService.getJobs(this.pageNo - 2).subscribe(jbs => {
                 if (jbs.length !== 0) {
                     this.jobs = jbs;
@@ -96,7 +101,12 @@ export class JobsComponent implements OnInit {
         console.log(job.id);
         this.jobService.requestJob(job.id).subscribe(jbs => {
             //this.guestJobs = jbs;
+            this.successfulApplied = true;
+            setTimeout(() => this.successfulApplied = null, 3000);
            console.log(jbs);
+        }, error => {
+            this.errorApplied = true;
+            setTimeout(() => this.errorApplied = null, 3000);
         });
     }
 

@@ -74,7 +74,7 @@
                                                     <div class="m-portlet__foot">
                                                         <div class="row align-items-center">
                                                             <div class="col-lg-12">
-                                                                <button class="btn btn-accent" type="submit">
+                                                                <button class="btn btn-accent" data-toggle="modal" data-target="#m_modal_1" type="submit" (click)="selectJob(app)">
                                                                     Info
                                                                 </button>
                                                             </div>
@@ -216,4 +216,94 @@
                 </div>
 			</div>
     </div>
+    <!--begin::Modal-->
+    <div class="modal fade" id="m_modal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        {{selectedJob.description}}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">
+							&times;
+						</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group m-form__group">
+                        <label>
+                            Hours / Week
+                        </label>
+                        <div class="m-input-icon m-input-icon--left m-input-icon--right">
+                            <input type="text" class="form-control m-input m-input--pill" placeholder="{{selectedJob.hpw}}" value="{{selectedJob.hpw}}" readonly="readonly">
+                            <span class="m-input-icon__icon m-input-icon__icon--left">
+								<span>
+									<i class="fa fa-clock-o"></i>
+								</span>
+							</span>
+                        </div>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label>
+                            Cost
+                        </label>
+                        <div class="m-input-icon m-input-icon--left m-input-icon--right">
+                            <input type="text" class="form-control m-input m-input--pill" placeholder="{{selectedJob.cost}}" value="{{selectedJob.cost}}" readonly="readonly">
+                            <span class="m-input-icon__icon m-input-icon__icon--left">
+								<span>
+									<i class="fa fa-money"></i>
+								</span>
+							</span>
+                        </div>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label>
+                            Location
+                        </label>
+                        <div class="m-input-icon m-input-icon--left m-input-icon--right">
+                            <input type="text" class="form-control m-input m-input--pill" placeholder="{{selectedJob.location}}" value="{{selectedJob.location}}" readonly="readonly">
+                            <span class="m-input-icon__icon m-input-icon__icon--left">
+								<span>
+									<i class="fa fa-map-marker"></i>
+								</span>
+							</span>
+                        </div>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label>
+                            Start date
+                        </label>
+                        <div class="m-input-icon m-input-icon--left m-input-icon--right">
+                            <input type="text" class="form-control m-input m-input--pill" placeholder="{{selectedJob.startDate}}" value="{{selectedJob.startDate}}" readonly="readonly">
+                            <span class="m-input-icon__icon m-input-icon__icon--left">
+								<span>
+									<i class="fa fa-calendar-o"></i>
+								</span>
+							</span>
+                        </div>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label>
+                            End date
+                        </label>
+                        <div class="m-input-icon m-input-icon--left m-input-icon--right">
+                            <input type="text" class="form-control m-input m-input--pill" placeholder="{{selectedJob.endDate}}" value="{{selectedJob.endDate}}" readonly="readonly">
+                            <span class="m-input-icon__icon m-input-icon__icon--left">
+								<span>
+									<i class="fa fa-calendar-o"></i>
+								</span>
+							</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Modal-->
 </div>

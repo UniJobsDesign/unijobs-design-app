@@ -16,6 +16,24 @@
 </div>
 <!-- END: Subheader -->
 <div class="m-content">
+    <div *ngIf="errorApplied">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+            <strong>
+                Oh snap!
+            </strong>
+            Unfortunately, your request to apply for this job failed.
+        </div>
+    </div>
+    <div *ngIf="successfulApplied">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+            <strong>
+                Well done!
+            </strong>
+            You successfully applied for this job.
+        </div>
+    </div>
     <div *ngIf="jobs" style="animation: fadeIn;">
         <div class="input-group">
             <div class="input-group-btn">

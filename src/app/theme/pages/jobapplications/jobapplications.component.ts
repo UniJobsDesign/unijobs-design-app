@@ -6,7 +6,7 @@ import {Request} from "../../../auth/_models/request";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: '.m-wrapper',
+  selector: '.m-wrapper .m-grid__item.m-grid__item--fluid.m-wrapper',
   templateUrl: './jobapplications.component.html',
   styles: []
 })
@@ -22,7 +22,7 @@ export class JobapplicationsComponent implements OnInit {
     jobsrejected: Job[] = [];
     jobsfinished: Job[] = [];
     whatever: string;
-
+    selectedJob: Job = new Job();
 
   constructor(private requestService: RequestService, private jobService: JobsService,private router: Router) { }
 
@@ -129,5 +129,10 @@ export class JobapplicationsComponent implements OnInit {
         this.router.navigate(['review',job.id,app.id]);
     }
 
+    selectJob(job: Job) {
+        job.startDate = job.startDate.substring(0, 10);
+        job.endDate = job.endDate.substring(0, 10);
+        this.selectedJob = job;
+    }
 
 }
