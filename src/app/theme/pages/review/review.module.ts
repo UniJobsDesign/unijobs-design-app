@@ -5,6 +5,7 @@ import {DefaultComponent} from "../default/default.component";
 import {ReviewComponent} from "./review.component";
 import {LayoutModule} from "../../layouts/layout.module";
 import {FormsModule} from "@angular/forms";
+import {WidgetsSummernoteModule} from "../default/components/forms/widgets/widgets-summernote/widgets-summernote.module";
 
 
 const routes: Routes = [

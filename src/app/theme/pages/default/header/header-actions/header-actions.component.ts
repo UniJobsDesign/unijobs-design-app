@@ -1,6 +1,5 @@
 ///<reference path="../../../../../auth/_models/job.ts"/>
 import {Component, OnInit, ViewEncapsulation, AfterViewInit, ComponentFactoryResolver} from '@angular/core';
-import { Helpers } from '../../../../../helpers';
 import { ScriptLoaderService } from '../../../../../_services/script-loader.service';
 import {JobsService} from "../../../../../auth/_services/jobs.service";
 import {Job} from "../../../../../auth/_models/job";
