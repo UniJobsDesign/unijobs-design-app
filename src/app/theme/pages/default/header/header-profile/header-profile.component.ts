@@ -93,20 +93,20 @@ export class HeaderProfileComponent implements OnInit {
     updateUser(dob, phone) {
         console.log("DOB===", dob.value);
         console.log("PHOME===", phone.value);
-        if (dob.value !== null) {
+        if (dob.value) {
             this.user.dob = dob.value;
             console.log("PE IFFFFF")
         }
         else {
             console.log("PE ELSEEE");
-            this.user.dob = "2018-01-10";
+            this.user.dob = "null";
         }
 
         console.log("update User dob", this.user.dob);
-        if (phone.value !== null)
+        if (phone.value !== undefined)
             this.user.phone = phone.value;
         else
-            this.user.phone = "0000000000";
+            this.user.phone = "null";
         console.log("update user phone", this.user.phone);
         this.userService.update(this.user).subscribe(user2 => {
             console.log(user2);
