@@ -2,6 +2,9 @@ import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/co
 import { Helpers } from '../../../helpers';
 import {User} from "../../../auth/_models/user";
 import {UserService} from "../../../auth/_services/user.service";
+import {Observable} from "rxjs/Observable";
+import { OnDestroy } from '@angular/core';
+import * as io from 'socket.io-client';
 
 declare let mLayout: any;
 @Component({
@@ -12,11 +15,15 @@ declare let mLayout: any;
 export class HeaderNavComponent implements OnInit, AfterViewInit {
 
     user: User;
+    private url = 'http://localhost:8081';
+    public static socket;
 
     constructor(private userService: UserService) {
 
     }
     ngOnInit() {
+        HeaderNavComponent.socket = io(this.url);
+
         var userId = localStorage.getItem("userId");
         console.log("userID - ngOnInit", userId);
         /*
@@ -25,12 +32,38 @@ export class HeaderNavComponent implements OnInit, AfterViewInit {
             console.log(this.user);
         });
         */
+        this.sendMessage(userId);
         this.user = JSON.parse(localStorage.getItem('user'));
+        this.getMessages().subscribe(data => {
+            console.log(data);
+        });
     }
+
+    ngOnDestroy() {
+        HeaderNavComponent.socket.disconnect();
+    }
+
     ngAfterViewInit() {
 
         mLayout.initHeader();
 
+    }
+
+    sendMessage(message){
+        HeaderNavComponent.socket.emit("userId", message);
+    }
+
+    getMessages() {
+        let observable = new Observable(observer => {
+            HeaderNavComponent.socket.on('message', (data) => {
+                console.log(data);
+                observer.next(data);
+            });
+            return () => {
+                HeaderNavComponent.socket.disconnect();
+            };
+        });
+        return observable;
     }
 
 }

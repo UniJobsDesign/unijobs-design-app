@@ -4,6 +4,7 @@ import { Headers } from "@angular/http";
 import "rxjs/add/operator/map";
 import { User } from "../_models/user";
 import { Observable } from "rxjs/Observable";
+import {HeaderNavComponent} from "../../theme/layouts/header-nav/header-nav.component";
 
 @Injectable()
 export class AuthenticationService {
@@ -38,5 +39,6 @@ export class AuthenticationService {
         localStorage.removeItem('token');
         localStorage.removeItem('userId');
         localStorage.removeItem('user');
+        HeaderNavComponent.socket.disconnect();
     }
 }
