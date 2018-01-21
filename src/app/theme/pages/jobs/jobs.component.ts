@@ -58,9 +58,10 @@ export class JobsComponent implements OnInit {
 
     clear() {
         this.whatever = '';
-        this.jobService.getJobs(this.pageNo).subscribe(jbs => {
+        this.jobService.getJobs(0).subscribe(jbs => {
             this.jobs = jbs;
             console.log(this.jobs);
+            this.pageNo == 1;
         });
     }
 

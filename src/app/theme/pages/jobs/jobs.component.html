@@ -17,7 +17,6 @@
 </div>
 <!-- END: Subheader -->
 <div class="m-content">
-<div *ngIf="jobs.length!=0; else noSkills">
     <div *ngIf="errorApplied">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
@@ -62,6 +61,7 @@
         </div>
     </div>
     <br/>
+    <div *ngIf="jobs.length!=0; else noSkills">
     <div *ngIf="jobs" style="animation: fadeIn;">
         <div class="row">
             <div *ngFor="let job of jobs" class="col-xl-4">
@@ -199,13 +199,13 @@
             </div>
         </div>
     </div>
+    </div>
+    <ng-template #noSkills>
+                                                                <div class="m-portlet">
+                                                                    <p class="m-form__section" style="padding: 30px">
+                                                                        Please check your selected skills in User Profile and make sure you selected at least one
+                                                                    </p>
+                                                                </div>
+                                                            </ng-template>
     <!--end::Modal-->
 </div>
-</div>
-<ng-template #noSkills>
-                                                            <div class="m-portlet">
-                                                                <p class="m-form__section" style="padding: 30px">
-                                                                    Please check your selected skills in User Profile and make sure you selected at least one
-                                                                </p>
-                                                            </div>
-                                                        </ng-template>
