@@ -478,7 +478,9 @@
                             </div>
 					     </div>
                     </div>
+
 					<div class="tab-pane" id="m_user_profile_tab_3">
+					    <div *ngIf="jobs.length!=0; else notTrue">
                 	    <div class="m-content">
                 	        <div *ngIf="jobs" style="animation: fadeIn;">
                         		<div class="row">
@@ -517,6 +519,7 @@
 
                         		</div>
                         	</div>
+
 							<div class="m-portlet__foot">
 								<a href="" class="btn btn-outline-metal m-btn m-btn--pill m-btn--air btn-sm" (click)="prev()"><</a>
 								{{pageNo}}
@@ -524,8 +527,18 @@
 
 							</div>
                         </div>
+                        </div>
+                         <ng-template #notTrue>
+                                                            <div>
+                                                                <h5 class="m-form__section" style="padding: 30px">
+                                                                    No added jobs
+                                                                </h5>
+                                                            </div>
+                                                        </ng-template>
+
                     </div>
                 </div>
+
 			</div>
 		</div>
 	</div>
