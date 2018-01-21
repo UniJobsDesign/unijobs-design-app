@@ -10,12 +10,12 @@ import { ScriptLoaderService } from "./_services/script-loader.service";
 import { ThemeRoutingModule } from "./theme/theme-routing.module";
 import { AuthModule } from "./auth/auth.module";
 import { GlobalErrorHandler } from "./_services/error-handler.service";
-import {JobsService} from "./auth/_services/jobs.service";
+import { JobsService } from "./auth/_services/jobs.service";
 import { FormsModule } from '@angular/forms';
-import {RequestService} from "./auth/_services/request.service";
-import { GuestJobsService} from "./auth/_services/guest_jobs.service";
+import { RequestService } from "./auth/_services/request.service";
+import { GuestJobsService } from "./auth/_services/guest_jobs.service";
 import { ReviewComponent } from './theme/pages/review/review.component';
-import {ReviewService} from "./auth/_services/review.service";
+import { ReviewService } from "./auth/_services/review.service";
 
 
 @NgModule({
@@ -32,7 +32,7 @@ import {ReviewService} from "./auth/_services/review.service";
         AuthModule,
         FormsModule
     ],
-    providers: [ScriptLoaderService, { provide: ErrorHandler, useClass: GlobalErrorHandler }, JobsService,RequestService, GuestJobsService, ReviewService],
+    providers: [ScriptLoaderService, { provide: ErrorHandler, useClass: GlobalErrorHandler }, JobsService, RequestService, GuestJobsService, ReviewService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

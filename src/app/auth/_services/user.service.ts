@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Headers, Http, RequestOptions, Response } from "@angular/http";
 
 import { User } from "../_models/index";
-import {Observable} from "rxjs/Observable";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class UserService {
@@ -42,7 +42,7 @@ export class UserService {
         const getUrl = `${this.OauthUser}/getUserById?userId=${id}&${creds}`;
         console.log(getUrl);
 
-        return this.http.get(getUrl, {headers: headers})
+        return this.http.get(getUrl, { headers: headers })
             .map(this.handleData)
             .catch(this.handleError);
     }
@@ -61,7 +61,7 @@ export class UserService {
         const getUrl = `${this.OauthUser}/getUserByName?username=${username}&${creds}`;
         console.log(getUrl);
 
-        return this.http.get(getUrl, {headers: headers})
+        return this.http.get(getUrl, { headers: headers })
             .map((response: Response) => response.json());
     }
 
@@ -70,16 +70,16 @@ export class UserService {
         user.username = "";
         let header = new Headers({ 'Content-Type': 'application/json' });
         const getUrl = `${this.OauthUser}/newUser`;
-        console.log("Create user:",user);
+        console.log("Create user:", user);
         return this.http.post(getUrl, user, { headers: header }).map((response: Response) => response.json());
     }
 
     update(user: User) {
         let header = new Headers({ 'Content-Type': 'application/json' });
         const getUrl = `${this.OauthUser}/updateUser`;
-        console.log("Update user:",user);
+        console.log("Update user:", user);
 
-        return this.http.post(getUrl, user, { headers: header }).map((response: Response)=> response.json());
+        return this.http.post(getUrl, user, { headers: header }).map((response: Response) => response.json());
     }
 
     delete(id: number) {
@@ -91,7 +91,7 @@ export class UserService {
         return body;
     }
 
-    private handleError (error: any) {
+    private handleError(error: any) {
         const errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
         console.error(errMsg); // log to console instead

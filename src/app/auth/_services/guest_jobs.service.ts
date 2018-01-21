@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
-import {Headers} from '@angular/http';
-import {Observable} from 'rxjs/Rx';
-import {log} from "util";
-import {Job} from "../_models/job";
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Headers } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { log } from "util";
+import { Job } from "../_models/job";
 
 @Injectable()
 export class GuestJobsService {
@@ -43,7 +43,7 @@ export class GuestJobsService {
         const getUrl = `${this.url}/byDescription/${filtervalue}/1`;
         const headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        return this.http.post(getUrl, "", {headers: headers}).map(this.handleData).catch(this.handleError);
+        return this.http.post(getUrl, "", { headers: headers }).map(this.handleData).catch(this.handleError);
     }
 
 

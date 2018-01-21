@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewEncapsulation} from "@angular/core";
-import {Job} from "../_models/job";
-import {GuestJobsService} from "../_services/guest_jobs.service";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Job } from "../_models/job";
+import { GuestJobsService } from "../_services/guest_jobs.service";
 
 @Component({
     selector: 'app-guest-jobs',

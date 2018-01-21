@@ -1,14 +1,14 @@
-import {AfterViewInit, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {Job} from "../../../auth/_models/job";
-import {Request} from "../../../auth/_models/request";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {JobsService} from "../../../auth/_services/jobs.service";
-import {RequestService} from "../../../auth/_services/request.service";
-import {ScriptLoaderService} from "../../../_services/script-loader.service";
-import {Review} from "../../../auth/_models/review";
-import {ReviewService} from "../../../auth/_services/review.service";
-import {User} from "../../../auth/_models/user";
-import {UserService} from "../../../auth/_services/user.service";
+import { AfterViewInit, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Job } from "../../../auth/_models/job";
+import { Request } from "../../../auth/_models/request";
+import { ActivatedRoute, Params, Router } from "@angular/router";
+import { JobsService } from "../../../auth/_services/jobs.service";
+import { RequestService } from "../../../auth/_services/request.service";
+import { ScriptLoaderService } from "../../../_services/script-loader.service";
+import { Review } from "../../../auth/_models/review";
+import { ReviewService } from "../../../auth/_services/review.service";
+import { User } from "../../../auth/_models/user";
+import { UserService } from "../../../auth/_services/user.service";
 
 @Component({
     selector: ".m-grid__item.m-grid__item--fluid.m-wrapper",
@@ -24,17 +24,17 @@ export class ReviewComponent implements OnInit, AfterViewInit {
     reviewError: boolean;
 
     constructor(private _script: ScriptLoaderService,
-                private route: ActivatedRoute,
+        private route: ActivatedRoute,
 
-                private userService: UserService,
-                private reviewService: ReviewService,
-                private _router: Router) {}
+        private userService: UserService,
+        private reviewService: ReviewService,
+        private _router: Router) { }
 
     ngOnInit() {
         this.route.params.
-        switchMap((params: Params) => this.userService.getById(+params['appid']))
+            switchMap((params: Params) => this.userService.getById(+params['appid']))
             .subscribe(m => {
-                console.log("Request:",m);
+                console.log("Request:", m);
                 this.application = m;
             });
     }
@@ -44,7 +44,7 @@ export class ReviewComponent implements OnInit, AfterViewInit {
 
     }
 
-    review(){
+    review() {
         var description = document.getElementsByClassName('note-editable')[0];
         console.log("review", this.application.id);
         console.log("desc", description.innerHTML.toString());
@@ -53,7 +53,7 @@ export class ReviewComponent implements OnInit, AfterViewInit {
         var userId = +localStorage.getItem('userId');
 
 
-        var review: Review = <Review> {
+        var review: Review = <Review>{
             id: null,
             stars: this.stars,
             reviewedId: this.application.id,
@@ -61,7 +61,7 @@ export class ReviewComponent implements OnInit, AfterViewInit {
             comment: description.innerHTML.toString(),
         };
 
-        if(description.innerHTML.toString().length == 0){
+        if (description.innerHTML.toString().length == 0) {
             console.log("NUUU LENGTH E 0");
         } else {
             console.log(review);

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { Helpers } from '../../../helpers';
-import {User} from "../../../auth/_models/user";
-import {UserService} from "../../../auth/_services/user.service";
-import {Observable} from "rxjs/Observable";
+import { User } from "../../../auth/_models/user";
+import { UserService } from "../../../auth/_services/user.service";
+import { Observable } from "rxjs/Observable";
 import { OnDestroy } from '@angular/core';
 import * as io from 'socket.io-client';
 
@@ -49,7 +49,7 @@ export class HeaderNavComponent implements OnInit, AfterViewInit {
 
     }
 
-    sendMessage(message){
+    sendMessage(message) {
         HeaderNavComponent.socket.emit("userId", message);
     }
 

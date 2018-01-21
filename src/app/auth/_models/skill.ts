@@ -1,4 +1,4 @@
-export class Skill{
+export class Skill {
     id: number;
     description: string;
     jobIds: number[];

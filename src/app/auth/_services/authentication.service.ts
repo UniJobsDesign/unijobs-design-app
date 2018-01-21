@@ -4,7 +4,7 @@ import { Headers } from "@angular/http";
 import "rxjs/add/operator/map";
 import { User } from "../_models/user";
 import { Observable } from "rxjs/Observable";
-import {HeaderNavComponent} from "../../theme/layouts/header-nav/header-nav.component";
+import { HeaderNavComponent } from "../../theme/layouts/header-nav/header-nav.component";
 
 @Injectable()
 export class AuthenticationService {

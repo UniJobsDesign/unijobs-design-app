@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http , Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import {log} from "util";
-import {Job} from "../_models/job";
+import { log } from "util";
+import { Job } from "../_models/job";
 
 @Injectable()
 export class JobsService {
@@ -31,7 +31,7 @@ export class JobsService {
     }
 
 
-    public getJobById(id:number):Observable<Job>{
+    public getJobById(id: number): Observable<Job> {
         const creds = 'access_token=' + localStorage.getItem('token');
         const getUrl = `${this.url}/getJob/${id}?${creds}`;
         return this.http.get(getUrl).map(this.handleDataR).catch(this.handleError);
@@ -47,14 +47,14 @@ export class JobsService {
         return body;
     }
 
-    private handleError (error: any) {
+    private handleError(error: any) {
         const errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
         console.error(errMsg); // log to console instead
         return Observable.throw(errMsg);
     }
 
-    public jobFilterByDescription(filtervalue: string): Observable<Job[]>{
+    public jobFilterByDescription(filtervalue: string): Observable<Job[]> {
         if (filtervalue === '')
             return this.getJobs(0);
         const creds = 'access_token=' + localStorage.getItem('token');
@@ -62,10 +62,10 @@ export class JobsService {
         const headers = new Headers();
         headers.append('Authorization', 'Basic ' + this.basicHeader);
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        return this.http.post(getUrl, creds, {headers: headers}).map(this.handleData).catch(this.handleError);
+        return this.http.post(getUrl, creds, { headers: headers }).map(this.handleData).catch(this.handleError);
     }
 
-    public jobFilterByUser(): Observable<Job[]>{
+    public jobFilterByUser(): Observable<Job[]> {
         const creds = 'access_token=' + localStorage.getItem('token');
         const userId = localStorage.getItem('userId');
         console.log(userId);
@@ -74,7 +74,7 @@ export class JobsService {
         return this.http.get(getUrl).map(this.handleData).catch(this.handleError);
     }
 
-    public jobFilterByLocation(filtervalue: string): Observable<Job[]>{
+    public jobFilterByLocation(filtervalue: string): Observable<Job[]> {
         if (filtervalue === '')
             return this.getJobs(0);
         const creds = 'access_token=' + localStorage.getItem('token');
@@ -83,11 +83,11 @@ export class JobsService {
         headers.append('Authorization', 'Basic ' + this.basicHeader);
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         console.log(getUrl);
-        return this.http.post(getUrl, creds, {headers: headers}).map(this.handleData).catch(this.handleError);
+        return this.http.post(getUrl, creds, { headers: headers }).map(this.handleData).catch(this.handleError);
 
     }
 
-    public jobFilterByUniUser(page: number): Observable<Job[]>{
+    public jobFilterByUniUser(page: number): Observable<Job[]> {
         const creds = 'access_token=' + localStorage.getItem('token');
         const userId = localStorage.getItem('userId');
         console.log(userId);
@@ -96,28 +96,26 @@ export class JobsService {
         const headers = new Headers();
         headers.append('Authorization', 'Basic ' + this.basicHeader);
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        return this.http.post(getUrl, {headers:headers}).map(this.handleData).catch(this.handleError);
+        return this.http.post(getUrl, { headers: headers }).map(this.handleData).catch(this.handleError);
     }
 
 
-    addJob(job: Job)
-    {
+    addJob(job: Job) {
         const creds = 'access_token=' + localStorage.getItem('token');
         let header = new Headers({ 'Content-Type': 'application/json' });
         const getUrl = `${this.url}/newJob?${creds}`;
-        console.log("Add job:",job);
+        console.log("Add job:", job);
 
         return this.http.post(getUrl, job, { headers: header }).map(this.handleData).catch(this.handleError);
     }
 
 
-    requestJob(jobid: number)
-    {
+    requestJob(jobid: number) {
         const creds = 'access_token=' + localStorage.getItem('token');
         let header = new Headers({ 'Content-Type': 'application/json' });
         const userId = localStorage.getItem('userId');
         const getUrl = `http://localhost:8080/api/request/requestJob/${userId}/${jobid}?${creds}`;
-        console.log("Request job:",jobid);
+        console.log("Request job:", jobid);
 
         return this.http.post(getUrl, { headers: header }).map(this.handleDataR).catch(this.handleError);
     }

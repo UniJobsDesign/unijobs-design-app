@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Job} from "../../../auth/_models/job";
-import {JobsService} from "../../../auth/_services/jobs.service";
-import {RequestService} from "../../../auth/_services/request.service";
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Job } from "../../../auth/_models/job";
+import { JobsService } from "../../../auth/_services/jobs.service";
+import { RequestService } from "../../../auth/_services/request.service";
 import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
@@ -27,7 +27,7 @@ export class JobsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.jobService.getJobs(this.pageNo-1).subscribe(jbs => {
+        this.jobService.getJobs(this.pageNo - 1).subscribe(jbs => {
             this.jobs = jbs;
             console.log(this.jobs);
         });
@@ -66,7 +66,7 @@ export class JobsComponent implements OnInit {
 
     next(searchfilter) {
         console.log("Page number: ", this.pageNo);
-        console.log("seadasdsdada",searchfilter);
+        console.log("seadasdsdada", searchfilter);
         this.jobService.getJobs(this.pageNo).subscribe(jbs => {
             if (jbs.length !== 0) {
                 this.jobs = jbs;
@@ -97,13 +97,13 @@ export class JobsComponent implements OnInit {
 
 
 
-    apply(job: Job){
+    apply(job: Job) {
         console.log(job.id);
         this.jobService.requestJob(job.id).subscribe(jbs => {
             //this.guestJobs = jbs;
             this.successfulApplied = true;
             setTimeout(() => this.successfulApplied = null, 3000);
-           console.log(jbs);
+            console.log(jbs);
         }, error => {
             this.errorApplied = true;
             setTimeout(() => this.errorApplied = null, 3000);

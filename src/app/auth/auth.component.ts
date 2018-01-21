@@ -57,9 +57,9 @@ export class AuthComponent implements OnInit {
                 this._userService.getByUsername(this.model.username)
                     .subscribe(user => {
                         localStorage.setItem('userId', user.id.toString());
-                        localStorage.setItem('user',JSON.stringify(user));
+                        localStorage.setItem('user', JSON.stringify(user));
                         this._router.navigate([this.returnUrl]);
-                        })
+                    })
             },
             error => {
                 this.showAlert('alertSignin');

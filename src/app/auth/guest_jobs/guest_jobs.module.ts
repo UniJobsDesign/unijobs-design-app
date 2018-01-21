@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { GuestJobsComponent } from "./guest_jobs_component";
-import {FormsModule} from "@angular/forms";
-import {LayoutModule} from "../../theme/layouts/layout.module";
-import {DefaultComponent} from "../../theme/pages/default/default.component";
+import { FormsModule } from "@angular/forms";
+import { LayoutModule } from "../../theme/layouts/layout.module";
+import { DefaultComponent } from "../../theme/pages/default/default.component";
 
 const routes: Routes = [
     {
