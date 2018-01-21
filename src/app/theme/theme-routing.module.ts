@@ -438,7 +438,7 @@ const routes: Routes = [
                 "loadChildren": ".\/pages\/candidates\/candidates.module#CandidatesModule"
             },
             {
-                "path": "review/:jobid/:appid",
+                "path": "review/:appid",
                 "loadChildren": ".\/pages\/review\/review.module#ReviewModule"
             },
             {

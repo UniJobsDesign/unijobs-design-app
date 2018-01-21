@@ -4,6 +4,7 @@ import {Request} from "../../../auth/_models/request";
 import {async} from "rxjs/scheduler/async";
 import {Job} from "../../../auth/_models/job";
 import {JobsService} from "../../../auth/_services/jobs.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: '.m-wrapper',
@@ -24,7 +25,8 @@ export class CandidatesComponent implements OnInit {
   rejectUser: boolean;
 
   constructor(private requestService: RequestService,
-              private jobService: JobsService) {
+              private jobService: JobsService,
+              private router: Router) {
 
   }
 
@@ -143,6 +145,10 @@ export class CandidatesComponent implements OnInit {
         this.loadAccepted();
       })
     }
+  }
+
+  review(app){
+    this.router.navigate(['review',app]);
   }
 
 }

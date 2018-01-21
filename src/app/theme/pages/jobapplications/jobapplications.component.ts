@@ -126,8 +126,8 @@ export class JobapplicationsComponent implements OnInit {
         console.log("finished",this.jobsfinished);
     }
 
-    review(job,app){
-        this.router.navigate(['review',job.id,app.id]);
+    review(app){
+        this.router.navigate(['review',app]);
     }
 
     selectJob(job: Job) {
