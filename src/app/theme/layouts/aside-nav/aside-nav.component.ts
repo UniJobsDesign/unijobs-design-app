@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { Helpers } from '../../../helpers';
+import { HeaderNavComponent} from "../header-nav/header-nav.component";
 
 declare let mLayout: any;
 @Component({
@@ -8,13 +9,12 @@ declare let mLayout: any;
     encapsulation: ViewEncapsulation.None,
 })
 export class AsideNavComponent implements OnInit, AfterViewInit {
-
+    value = HeaderNavComponent.notifications.length;
 
     constructor() {
 
     }
     ngOnInit() {
-
     }
     ngAfterViewInit() {
 

@@ -13,7 +13,7 @@ declare let mLayout: any;
     encapsulation: ViewEncapsulation.None,
 })
 export class HeaderNavComponent implements OnInit, AfterViewInit {
-
+    public static notifications: String[]=[];
     user: User;
     private url = 'http://localhost:8081';
     public static socket;
@@ -21,6 +21,11 @@ export class HeaderNavComponent implements OnInit, AfterViewInit {
     constructor(private userService: UserService) {
 
     }
+
+    get staticNotifications() {
+        return HeaderNavComponent.notifications;
+    }
+
     ngOnInit() {
         HeaderNavComponent.socket = io(this.url);
 
@@ -57,6 +62,7 @@ export class HeaderNavComponent implements OnInit, AfterViewInit {
         let observable = new Observable(observer => {
             HeaderNavComponent.socket.on('message', (data) => {
                 console.log(data);
+                HeaderNavComponent.notifications.push(data);
                 observer.next(data);
             });
             return () => {

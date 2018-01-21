@@ -13,11 +13,13 @@
 							<span class="m-menu__link-text">
 								Dashboard
 							</span>
-							<span class="m-menu__link-badge">
-								<span class="m-badge m-badge--danger">
-									2
-								</span>
-							</span>
+                            <div *ngIf="value !== 0">
+                                <span class="m-menu__link-badge">
+                                    <span class="m-badge m-badge--danger">
+                                        {{value}}
+                                    </span>
+							    </span>
+                            </div>
 						</span>
 					</span>
                 </a>
