@@ -58,7 +58,8 @@ export class JobsService {
         if (filtervalue === '')
             return this.getJobs(0);
         const creds = 'access_token=' + localStorage.getItem('token');
-        const getUrl = `${this.url}/byDescription/${filtervalue}/1`;
+        const userId = localStorage.getItem('userId');
+        const getUrl = `${this.url}/byDescription/${filtervalue}/0/${userId}`;
         const headers = new Headers();
         headers.append('Authorization', 'Basic ' + this.basicHeader);
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -78,7 +79,8 @@ export class JobsService {
         if (filtervalue === '')
             return this.getJobs(0);
         const creds = 'access_token=' + localStorage.getItem('token');
-        const getUrl = `${this.url}/byLocation/${filtervalue}/1`;
+        const userId = localStorage.getItem('userId');
+        const getUrl = `${this.url}/byLocation/${filtervalue}/0/${userId}`;
         const headers = new Headers();
         headers.append('Authorization', 'Basic ' + this.basicHeader);
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
