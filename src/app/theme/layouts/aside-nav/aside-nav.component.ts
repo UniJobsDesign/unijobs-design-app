@@ -9,7 +9,6 @@ declare let mLayout: any;
     encapsulation: ViewEncapsulation.None,
 })
 export class AsideNavComponent implements OnInit, AfterViewInit {
-    value = HeaderNavComponent.notifications.length;
 
     constructor() {
 
