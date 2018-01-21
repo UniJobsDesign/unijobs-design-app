@@ -23,6 +23,7 @@ export class CandidatesComponent implements OnInit {
     jobsfinished: Job[] = [];
     acceptUser: boolean;
     rejectUser: boolean;
+    finishApplication: boolean;
 
     constructor(private requestService: RequestService,
         private jobService: JobsService,
@@ -132,6 +133,8 @@ export class CandidatesComponent implements OnInit {
                 console.log(req);
                 this.loadRejected();
                 this.loadPending();
+                this.rejectUser = true;
+                setTimeout(() => this.rejectUser = null, 3000);
             })
         }
     }
@@ -143,6 +146,8 @@ export class CandidatesComponent implements OnInit {
                 console.log(req);
                 this.loadFinished();
                 this.loadAccepted();
+                this.finishApplication = true;
+                setTimeout(() => this.finishApplication = null, 3000);
             })
         }
     }
