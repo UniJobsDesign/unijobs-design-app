@@ -59,7 +59,7 @@ export class JobsService {
             return this.getJobs(0);
         const creds = 'access_token=' + localStorage.getItem('token');
         const userId = localStorage.getItem('userId');
-        const getUrl = `${this.url}/byDescription/${filtervalue}/0/${userId}`;
+        const getUrl = `${this.url}/byDescription/${filtervalue}/0/${userId}` ;
         const headers = new Headers();
         headers.append('Authorization', 'Basic ' + this.basicHeader);
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
