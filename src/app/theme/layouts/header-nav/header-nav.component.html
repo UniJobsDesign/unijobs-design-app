@@ -100,7 +100,7 @@
 							</li>
 							<li class="m-nav__item m-topbar__notifications m-topbar__notifications--img m-dropdown m-dropdown--large m-dropdown--header-bg-fill m-dropdown--arrow m-dropdown--align-center 	m-dropdown--mobile-full-width" data-dropdown-toggle="click" data-dropdown-persistent="true">
 								<a href="#" class="m-nav__link m-dropdown__toggle" id="m_topbar_notification_icon">
-									<div *ngIf="staticNotifications.length == 0; else NoNotificationsBell" style="padding-top: 14px;">
+									<div *ngIf="staticNotifications.length == 0; else NoNotificationsBell" style="display: table-cell; vertical-align: middle;">
                                         <span class="m-nav__link-badge m-badge m-badge--dot m-badge--info m--hide"></span>
                                         <span class="m-nav__link-icon" style="animation: unset !important;">
 											<i class="flaticon-music-2"></i>
@@ -142,12 +142,12 @@
 																		<div *ngFor="let notification of staticNotifications" style="padding-bottom: 15px;">
 																			<div class="m-list-timeline__item">
 																				<span class="m-list-timeline__badge -m-list-timeline__badge--state-success"></span>
-																				<span class="m-list-timeline__text">
+																				<span class="m-list-timeline__text" (click)="dismiss(notification)">
 																				{{notification}}
-																			</span>
+																				</span>
 																				<span class="m-list-timeline__time">
 																				Just now
-																			</span>
+																				</span>
 																			</div>
 																		</div>
 																	</div>

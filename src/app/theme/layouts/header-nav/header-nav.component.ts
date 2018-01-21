@@ -72,4 +72,10 @@ export class HeaderNavComponent implements OnInit, AfterViewInit {
         return observable;
     }
 
+    dismiss(notification) {
+        const index: number = HeaderNavComponent.notifications.indexOf(notification);
+        if (index !== -1) {
+            HeaderNavComponent.notifications.splice(index, 1);
+        }
+    }
 }
