@@ -12,7 +12,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 export class JobsComponent implements OnInit {
     pageNo = 1;
     selectedDropDown = 'Description';
-    jobs: Job[];
+    jobs: Job[] = [];
     whatever: string;
     selectedJob: Job = new Job();
     successfulApplied: boolean;

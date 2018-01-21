@@ -1,3 +1,4 @@
+
 <div class="m-subheader">
     <div class="d-flex align-items-center">
         <div class="mr-auto">
@@ -6,7 +7,7 @@
             </h3>
             <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
                 <li class="m-nav__item m-nav__item--home">
-                    <a href="#" class="m-nav__link m-nav__link--icon">
+                    <a href="/index" class="m-nav__link m-nav__link--icon">
                         <i class="m-nav__link-icon la la-home"></i>
                     </a>
                 </li>
@@ -16,6 +17,7 @@
 </div>
 <!-- END: Subheader -->
 <div class="m-content">
+<div *ngIf="jobs.length!=0; else noSkills">
     <div *ngIf="errorApplied">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
@@ -35,6 +37,7 @@
         </div>
     </div>
     <div *ngIf="jobs" style="animation: fadeIn;">
+
         <div class="input-group">
             <div class="input-group-btn">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -198,3 +201,11 @@
     </div>
     <!--end::Modal-->
 </div>
+</div>
+<ng-template #noSkills>
+                                                            <div class="m-portlet">
+                                                                <p class="m-form__section" style="padding: 30px">
+                                                                    Please check your selected skills in User Profile and make sure you selected at least one
+                                                                </p>
+                                                            </div>
+                                                        </ng-template>

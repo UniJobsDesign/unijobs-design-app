@@ -94,6 +94,10 @@ export class HeaderActionsComponent implements OnInit, AfterViewInit {
             });
 }
 
+    cancel(){
+        setTimeout(() => this._router.navigateByUrl('/index'), 500);
+    }
+
         //this.job = new Job(1,description,hpw,cost,1,location,startDate,endDate);
 
         //console.log("USERID",userId);
